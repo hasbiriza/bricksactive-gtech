@@ -1,5 +1,3 @@
-
-
 /*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
@@ -530,6 +528,29 @@
         "padding_top_mobile": 24,
         "padding_bottom_mobile": 24
       }
+    },
+    "faq_dropdown_9dXMrA": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "dropdown_yNCMMC": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Do I have to register as a member to shop on BricksActive.id?",
+            "answer": "<p>You need to register as a member to shop on BricksActive.id. If you register as a member of BricksActive.id, you will enjoy various benefits such as:</p><ul><li>Faster checkout for next order</li><li>Saving more than 1 delivery address on your account</li><li>Update your account information</li><li>Track your order status</li><li>View previous orders</li><li>The option to subscribe to our newsletter, where you will get a large selection of new products, promotions, special prices, events and other interesting offers.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_yNCMMC"
+      ],
+      "name": "FAQ Dropdown",
+      "settings": {
+        "column_title": "REGISTRATION",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
     }
   },
   "order": [
@@ -541,15 +562,7 @@
     "faq_dropdown_shipping",
     "faq_dropdown_return",
     "faq_dropdown_refund",
-    "faq_dropdown_others"
+    "faq_dropdown_others",
+    "faq_dropdown_9dXMrA"
   ]
 }
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */

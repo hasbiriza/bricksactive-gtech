@@ -31,7 +31,7 @@
                 tabindex="-1"
               >
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="mega-menu__list {% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
@@ -92,3 +92,16 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+
+{% style  %}  
+
+.mega-menu__list{
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(8, auto);
+    width: fit-content;
+    row-gap:8px;
+}
+
+{% endstyle %}

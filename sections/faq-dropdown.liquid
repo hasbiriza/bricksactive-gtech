@@ -10,6 +10,15 @@
       padding-bottom: {{ section.settings.padding_bottom_mobile | append: 'px' }};
     }
   }
+
+  /* Style untuk rotasi ikon - dibuat spesifik per section */
+  #section-{{ section.id }} .faq-toggle .faq-icon.open {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+  #section-{{ section.id }} .faq-toggle .faq-icon {
+    transition: transform 0.3s ease;
+  }
 {% endstyle %}
 
 <section id="section-{{ section.id }}" class="page-width tw-flex tw-flex-col tw-gap-[40px] md:tw-gap-0 md:tw-flex-row tw-items-start tw-justify-between">
@@ -17,17 +26,61 @@
   <div class="tw-w-full md:tw-w-[720px] tw-flex tw-flex-col tw-items-start tw-justify-start">
     {% for block in section.blocks %}
       <div class="tw-w-full">
-        <a href="javascript:void(0)" drop-switch="{{ block.id }}" class="faq-toggle tw-flex tw-flex-row tw-items-start tw-justify-between tw-py-[16px] tw-border-b-[1px] tw-border-slate-300 hover:tw-border-slate-600 tw-text-slate-600" aria-expanded="false">
+        <a href="javascript:void(0)" 
+           data-faq-toggle="section-{{ section.id }}-block-{{ block.id }}" 
+           class=" tw-no-underline faq-toggle tw-flex tw-flex-row tw-items-start tw-justify-between tw-py-[16px] tw-border-b-[1px] tw-border-slate-300 hover:tw-border-slate-600 tw-text-slate-600" 
+           aria-expanded="false">
           <span class="tw-flex tw-flex-1 tw-text-[14px]">{{ block.settings.question }}</span>
           <svg class="faq-icon" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 8.3751L0 2.3751L1.4 0.975098L6 5.5751L10.6 0.975098L12 2.3751L6 8.3751Z" fill="#475569"/>
-          </svg>            
+          </svg>
         </a>
-        <div drop-container="{{ block.id }}" class="faq-content tw-hidden tw-mb-[16px] tw-w-full tw-p-[16px] tw-bg-stone-100 tw-text-[14px] tw-text-slate-600 tw-rounded-b-[8px] [&_ul]:tw-list-[unset] [&_ul]:tw-pl-[16px]">{{ block.settings.answer }}</div>
+        <div data-faq-content="section-{{ section.id }}-block-{{ block.id }}" 
+             class="faq-content tw-hidden tw-mb-[16px] tw-w-full tw-p-[16px] tw-bg-stone-100 tw-text-[14px] tw-text-slate-600 tw-rounded-b-[8px] [&_ul]:tw-list-[unset] [&_ul]:tw-pl-[16px]">
+          {{ block.settings.answer }}
+        </div>
       </div>
     {% endfor %}
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Hanya cari toggle dalam section ini saja
+    const currentSection = document.getElementById('section-{{ section.id }}');
+    if (!currentSection) return;
+    
+    const faqToggles = currentSection.querySelectorAll('[data-faq-toggle]');
+
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Ambil ID unik dari atribut 'data-faq-toggle'
+        const toggleId = this.getAttribute('data-faq-toggle');
+        
+        // Cari elemen konten yang sesuai dengan ID tersebut (hanya dalam section ini)
+        const content = currentSection.querySelector(`[data-faq-content="${toggleId}"]`);
+        
+        // Cari ikon panah di dalam tombol yang diklik
+        const icon = this.querySelector('.faq-icon');
+
+        // Jika kontennya ada
+        if (content && icon) {
+          // Toggle class 'tw-hidden' untuk menampilkan atau menyembunyikan jawaban
+          content.classList.toggle('tw-hidden');
+          
+          // Toggle class 'open' pada ikon untuk memutar panahnya
+          icon.classList.toggle('open');
+
+          // Perbarui status aria-expanded untuk aksesibilitas
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {

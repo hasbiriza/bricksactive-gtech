@@ -255,6 +255,10 @@
   color: rgb(71 85 105 / var(--tw-text-opacity, 1))
 }
 
+.tw-no-underline {
+  text-decoration-line: none
+}
+
 .hover\:tw-border-slate-600:hover {
   --tw-border-opacity: 1;
   border-color: rgb(71 85 105 / var(--tw-border-opacity, 1))
