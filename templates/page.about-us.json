@@ -10,200 +10,147 @@
 {
   "sections": {
     "main": {
-      "type": "page-about-us",
+      "type": "main-page",
+      "disabled": true,
       "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
-    "custom-content": {
-      "type": "custom-content",
+    "image_banner_6phnHB": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/filters_quality_85.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "rich_text_z8kUCF": {
+      "type": "rich-text",
       "blocks": {
-        "be5d2488-3c71-471f-bb75-dbccb6970cb0": {
-          "type": "image",
+        "heading_UQGxWC": {
+          "type": "heading",
           "settings": {
-            "link": "",
-            "width": "100%",
-            "alignment": "center",
-            "block_custom_class": "",
-            "animations": "inherit"
+            "heading": "ABOUT US",
+            "heading_size": "h1"
           }
         },
-        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1": {
+        "text_g6DLjh": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "title": "<h4 class=\"about__block-heading\">It pains me physically to see woman victimized,<br> rendered pathetic by fashion.<\/h4>\n<p class=\"about__block-subheading\">Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the<br> cool place, but I wasn’t really cool – I was trying to pass for hip or cool.<\/p>",
-            "subheading": "",
-            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-1",
-            "animations": "inherit"
-          }
-        },
-        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "width": "50%",
-            "alignment": "center",
-            "block_custom_class": "",
-            "animations": "inherit"
-          }
-        },
-        "9a3a8077-de29-4141-9162-b9484d4a85f8": {
-          "type": "html",
-          "settings": {
-            "code": "<div class=\"sf__about-custom-list\">\n  <h3>We are proudly<br> Australian.<\/h3>\n  <ul>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon1.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>Soft Fabric<\/h4>\n          <p class=\"text-color-subtext\">Get complimentary ground shipping on every<br> order.Don’t love it? Send it back, on us.<\/p>\n      <\/div>\n    <\/li>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon2_daf1b6c2-ef2e-416c-ae6a-a7ddd145b6c5.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>Lightweight<\/h4>\n          <p class=\"text-color-subtext\">Join Minimog Rewards to earn gift cards<br>\nand enjoy exclusive member benefits.<\/p>\n      <\/div>\n    <\/li>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon3.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>All Day Comfort<\/h4>\n          <p class=\"text-color-subtext\">We believe getting dressed should be the<br> easiest part of your day.<\/p>\n      <\/div>\n    <\/li>\n  <\/ul>\n<\/div>",
-            "width": "50%",
-            "block_custom_class": "sf__about-custom-html",
-            "animations": "inherit"
-          }
-        },
-        "28e3ce35-e364-43f3-ba87-18b633233063": {
-          "type": "text",
-          "settings": {
-            "title": "<h4 class=\"about__block-heading\">The world needs to move fast to make a meaningful<br> difference in the fight against climate change.<\/h4>",
-            "subheading": "",
-            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-2",
-            "animations": "inherit"
-          }
-        },
-        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36": {
-          "type": "text",
-          "settings": {
-            "title": "Our Team",
-            "subheading": "",
-            "text": "",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-custom-heading",
-            "animations": "inherit"
-          }
-        },
-        "859f4ef2-676f-4587-9ae8-3a19ffa439dd": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Edward Lindgren",
-            "subtitle": "<span class=\"text-color-subtext\">CHIEF OPERATING OFFICER<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
-          }
-        },
-        "a1a4a67f-c83f-4629-a006-e44f56c80bf5": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Chineze Afamefuna",
-            "subtitle": "<span class=\"text-color-subtext\">MARKETING<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
-          }
-        },
-        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Nado Husa",
-            "subtitle": "<span class=\"text-color-subtext\">CO-FOUNDER<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
           }
         }
       },
       "block_order": [
-        "be5d2488-3c71-471f-bb75-dbccb6970cb0",
-        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1",
-        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70",
-        "9a3a8077-de29-4141-9162-b9484d4a85f8",
-        "28e3ce35-e364-43f3-ba87-18b633233063",
-        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36",
-        "859f4ef2-676f-4587-9ae8-3a19ffa439dd",
-        "a1a4a67f-c83f-4629-a006-e44f56c80bf5",
-        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa"
+        "heading_UQGxWC",
+        "text_g6DLjh"
       ],
-      "custom_css": [
-        "@media (min-width: 1280px) {#m-custom__block--9a3a8077-de29-4141-9162-b9484d4a85f8 {padding-left: 100px; }}"
-      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "header_alignment": "center",
-        "container": "container",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "",
-        "content_color_scheme": "",
-        "gap": 30,
-        "use_scroll_mobile": false,
-        "gap_mobile": 16,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": "m-about-page"
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image_with_text_cAD3tM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aX7NrG": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE BRICKSACTIVE STORY",
+            "heading_size": "h1"
+          }
+        },
+        "text_z8tP8A": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At BricksActive, we believe that building isn’t just about following instructions it’s about unlocking imagination, nurturing creativity, and celebrating every moment of the journey.</p><p>As a LEGO® Certified Store (LCS) in Indonesia under PT. MAP Aktif Adiperkasa, BricksActive began its journey offline bringing joy through official LEGO stores across the country. In 2023, we took the next leap by launching <strong>BricksActive.id</strong>, a digital home for LEGO fans to explore exclusive sets and the entire world of LEGO online.</p><p>We are here for every kind of builder from the lifelong collector to the parent introducing their child to their first LEGO brick. Because building isn’t just a pastime it’s a way to dream, express, and connect.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aX7NrG",
+        "text_z8tP8A"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/KOHL.webp",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_YMDQLN": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_TWtGiC": {
+          "type": "heading",
+          "settings": {
+            "heading": "BUILDING BEYOND BRICKS",
+            "heading_size": "h1"
+          }
+        },
+        "text_cCTVQC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explore the universe of LEGO like never before. From timeless classics to themed adventures, BricksActive offers complete access to:</p><p><strong>LEGO® City, Creator, Technic, DUPLO, Classic, Friends, Ninjago, Minifigures, Star Wars, Speed Champions, Minecraft, Minions, Super Heroes, Architecture, Art, Disney Princess, DOTS, Harry Potter, Jurassic World, Super Mario.</strong></p><p>Looking for something special? Our <strong>exclusive collections</strong> feature sets only available at BricksActive LCS:</p><ul><li>LEGO® Icons</li><li>LEGO® Ideas</li><li>LEGO® BrickHeadz <br/></li></ul><p><br/><em>(all items exclusively available at BricksActive)</em></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TWtGiC",
+        "text_cCTVQC"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/lego-impact-story-top-banner-1920x747.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "main",
-    "custom-content"
+    "image_banner_6phnHB",
+    "rich_text_z8kUCF",
+    "image_with_text_cAD3tM",
+    "image_with_text_YMDQLN"
   ]
 }

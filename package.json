@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "shopify theme dev --store samoondoh.myshopify.com  --port 9393 ",
-    "pull": "shopify theme pull --store samoondoh.myshopify.com",
+    "dev": "shopify theme dev --store bricksactive-gtech.myshopify.com  --port 9393 ",
+    "pull": "shopify theme pull --store bricksactive-gtech.myshopify.com",
     "tailwind": "npx tailwindcss -i ./assets/input.css -o ./assets/output.css --watch ",
-    "hasbidev": "shopify theme pull --store samoondoh.myshopify.com "
+    "hasbidev": "shopify theme pull --store bricksactive-gtech.myshopify.com "
   },
   "author": "",
   "license": "ISC",

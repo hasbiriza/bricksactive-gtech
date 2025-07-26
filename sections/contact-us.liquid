@@ -1,0 +1,271 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{% comment %} The 'tw-' prefix has been added to all Tailwind CSS classes below. {% endcomment %}
+{% style %}
+  .section-contact-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top | append: 'px' }};
+    padding-bottom: {{ section.settings.padding_bottom | append: 'px' }};
+  }
+
+  @media screen and (max-width: 768px){
+    .section-contact-{{ section.id }}{
+      padding-top: 0;
+    }
+  }
+
+  .form__message .icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+{% endstyle %}
+
+<section id="section{{ section.id }}" class="tw-w-full color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="tw-w-full tw-flex tw-flex-col md:tw-flex-row tw-items-center tw-justify-center tw-gap-[56px]">
+      {% if section.settings.img_left %}
+        <img src="{{ section.settings.img_left | image_url }}" width="auto" height="auto" class="tw-max-[768px]:mt-[16px] tw-w-full md:tw-w-[55%] tw-object-cover tw-self-stretch"/>
+      {% endif %}
+      <div class="contact tw-flex-1 section-contact-{{ section.id }}">
+        <div class="tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[24px] {% if section.settings.cs_email != blank %} tw-mb-[40px] {% endif %}">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="tw-text-slate-800 tw-text-[24px] md:tw-text-[40px] tw-font-semibold">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.description != blank -%}
+            <div class="tw-text-[14px] tw-text-slate-500 tw-[&_a]:underline tw-hover:[&_a]:text-slate-700">{{ section.settings.description }}</div>
+          {%- endif -%}
+        </div>
+
+        <div class="tw-flex tw-flex-row tw-items-center tw-justify-start tw-gap-[24px] tw-mb-[32px] tw-pb-[32px] tw-border-b tw-border-slate-200">
+          {% if section.settings.cs_email != blank %}
+            <a href="mailto:{{ section.settings.cs_email }}" class="tw-flex tw-flex-row tw-items-center tw-justify-start tw-gap-[8px] tw-text-[14px] tw-text-slate-700">
+              <svg class="tw-[&_path]:fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20" fill="none">
+                <path d="M10.8892 20V17.7778H19.778V9.88889C19.778 8.81481 19.5743 7.80556 19.1669 6.86111C18.7595 5.91667 18.204 5.09259 17.5003 4.38889C16.7966 3.68519 15.9725 3.12963 15.0281 2.72222C14.0836 2.31481 13.0743 2.11111 12.0003 2.11111C10.9262 2.11111 9.91694 2.31481 8.97249 2.72222C8.02805 3.12963 7.20398 3.68519 6.50027 4.38889C5.79657 5.09259 5.24101 5.91667 4.83361 6.86111C4.4262 7.80556 4.22249 8.81481 4.22249 9.88889V16.6667H3.11138C2.50027 16.6667 1.97731 16.4493 1.54249 16.0144C1.10694 15.5789 0.88916 15.0556 0.88916 14.4444V12.2222C0.88916 11.7963 0.991012 11.4211 1.19472 11.0967C1.39842 10.773 1.66694 10.5093 2.00027 10.3056L2.0836 8.83333C2.25027 7.48148 2.63472 6.25926 3.23694 5.16667C3.83842 4.07407 4.58842 3.14815 5.48694 2.38889C6.38472 1.62963 7.39398 1.04148 8.51472 0.624444C9.63472 0.208148 10.7966 0 12.0003 0C13.2225 0 14.394 0.208148 15.5147 0.624444C16.6347 1.04148 17.6392 1.63407 18.528 2.40222C19.4169 3.17111 20.1625 4.09704 20.7647 5.18C21.3662 6.2637 21.7503 7.47222 21.9169 8.80556L22.0003 10.25C22.3336 10.4167 22.6021 10.6619 22.8058 10.9856C23.0095 11.31 23.1114 11.6667 23.1114 12.0556V14.6111C23.1114 15.0185 23.0095 15.3796 22.8058 15.6944C22.6021 16.0093 22.3336 16.25 22.0003 16.4167V17.7778C22.0003 18.3889 21.7829 18.9122 21.3481 19.3478C20.9125 19.7826 20.3892 20 19.778 20H10.8892ZM8.66694 12.2222C8.35212 12.2222 8.08842 12.1156 7.87583 11.9022C7.66249 11.6896 7.55583 11.4259 7.55583 11.1111C7.55583 10.7963 7.66249 10.5322 7.87583 10.3189C8.08842 10.1063 8.35212 10 8.66694 10C8.98175 10 9.24583 10.1063 9.45916 10.3189C9.67175 10.5322 9.77805 10.7963 9.77805 11.1111C9.77805 11.4259 9.67175 11.6896 9.45916 11.9022C9.24583 12.1156 8.98175 12.2222 8.66694 12.2222ZM15.3336 12.2222C15.0188 12.2222 14.7551 12.1156 14.5425 11.9022C14.3292 11.6896 14.2225 11.4259 14.2225 11.1111C14.2225 10.7963 14.3292 10.5322 14.5425 10.3189C14.7551 10.1063 15.0188 10 15.3336 10C15.6484 10 15.9125 10.1063 16.1258 10.3189C16.3384 10.5322 16.4447 10.7963 16.4447 11.1111C16.4447 11.4259 16.3384 11.6896 16.1258 11.9022C15.9125 12.1156 15.6484 12.2222 15.3336 12.2222ZM5.36138 10.5C5.28731 9.40741 5.44027 8.41667 5.82027 7.52778C6.19953 6.63889 6.70842 5.88407 7.34694 5.26333C7.9862 4.64333 8.72249 4.16667 9.55583 3.83333C10.3892 3.5 11.2225 3.33333 12.0558 3.33333C13.741 3.33333 15.1995 3.86593 16.4314 4.93111C17.6625 5.99556 18.4077 7.32407 18.6669 8.91667C16.9262 8.89815 15.3521 8.43037 13.9447 7.51333C12.5373 6.59704 11.4725 5.40741 10.7503 3.94444C10.454 5.44445 9.82916 6.77296 8.87583 7.93C7.92175 9.08778 6.75027 9.94444 5.36138 10.5Z"/>
+              </svg>
+              <span>Customer Service</span>
+            </a>
+          {% endif %}
+        </div>
+
+        {%- liquid
+          assign contact_form_class = 'tw-isolate'
+          if settings.animations_reveal_on_scroll
+            assign contact_form_class = 'tw-isolate scroll-trigger animate--slide-in'
+          endif
+        -%}
+        {%- form 'contact', id: 'ContactForm', class: 'tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[16px]' -%}
+          {%- if form.posted_successfully? -%}
+            <h2 class="form-status form-status-list form__message tw-!p-[16px] tw-!leading-[1.4] tw-gap-[12px] tw-bg-stone-50 tw-border tw-border-stone-100 tw-rounded-[8px] tw-!m-0" tabindex="-1" autofocus>
+              {% render 'icon-success' %}
+              {{ 'templates.contact.form.post_success' | t }}
+            </h2>
+          {%- elsif form.errors -%}
+            <div class="form__message">
+              <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+                {% render 'icon-error' %}
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h2>
+            </div>
+            <ul class="form-status-list caption-large" role="list">
+              <li>
+                <a href="#ContactForm-email" class="link">
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </a>
+              </li>
+            </ul>
+          {%- endif -%}
+          <div class="tw-flex tw-flex-col md:tw-flex-row tw-items-start tw-justify-start tw-gap-[16px] tw-w-full">
+            <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+              <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+              <input class="tw-w-full tw-px-[16px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-border tw-border-slate-300 tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))]"
+                autocomplete="name"
+                type="text"
+                id="ContactForm-name"
+                name="contact[{{ 'templates.contact.form.name' | t }}]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="{{ 'templates.contact.form.name' | t }}">
+            </div>
+            <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+              <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-email">
+                {{- 'templates.contact.form.email' | t }}
+                <span aria-hidden="true">*</span>
+              </label>
+              <input
+                autocomplete="email"
+                type="email"
+                id="ContactForm-email"
+                class="tw-w-full tw-px-[16px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-border tw-border-slate-300 tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))]"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ 'templates.contact.form.email' | t }}"
+              >
+              {%- if form.errors contains 'email' -%}
+                <small class="contact__field-error" id="ContactForm-email-error">
+                  <span class="tw-visually-hidden">{{ 'accessibility.error' | t }}</span>
+                  <span class="form__message">
+                    {%- render 'icon-error' -%}
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </span>
+                </small>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+            <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+            <input
+              type="tel"
+              id="ContactForm-phone"
+              class="tw-w-full tw-px-[16px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-border tw-border-slate-300 tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))]"
+              autocomplete="tel"
+              name="contact[{{ 'templates.contact.form.phone' | t }}]"
+              pattern="[0-9\-]*"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="{{ 'templates.contact.form.phone' | t }}"
+            >
+          </div>
+          <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+            <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-phone">Topic</label>
+            <select
+              id="ContactForm-topic"
+              class="classic tw-appearance-none tw-w-full tw-px-[16px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-border tw-border-slate-300 tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))]"
+              name="contact[{{ 'templates.contact.form.topic' | t }}]"
+            >
+              <option value="Customer Care">Customer Care</option>
+              <option value="Collaboration">Collaboration</option>
+            </select>
+          </div>
+
+          {% comment %} <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+            <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-serial">Serial Number</label>
+            <input
+              type="text"
+              id="ContactForm-serial"
+              class="tw-w-full tw-px-[16px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-border tw-border-slate-300 tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))]"
+              name="contact[Serial Number]"
+              placeholder="Serial number of your product (optional)"
+            >
+          </div> {% endcomment %}
+
+          <div class="tw-w-full tw-flex tw-flex-col tw-items-start tw-justify-start tw-gap-[8px]">
+            <label class="tw-text-[12px] tw-text-[color:rgb(var(--color-foreground))]" for="ContactForm-body">
+              {{- 'templates.contact.form.comment' | t -}}
+            </label>
+            <textarea
+              rows="12"
+              id="ContactForm-body"
+              class="tw-focus:rounded-[8px] text-area field__input tw-w-full tw-px-[16px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-rounded-[8px] tw-bg-white tw-text-[14px] tw-text-[color:rgb(var(--color-foreground))] tw-h-[140px]  tw-border tw-border-slate-300 "
+              name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="{{ 'templates.contact.form.comment_placeholder' | t }}"
+              style="border: 1px solid #cbd5e1;"
+
+            >
+              {{- form.body -}}
+            </textarea>
+          </div>
+          <button type="submit" class="tw-w-full tw-mt-[16px] tw-min-h-[48px] tw-rounded-[var(--buttons-radius)] tw-text-[16px] tw-bg-[color:rgb(var(--color-button))] tw-text-[color:rgb(var(--color-button-text))]">
+            {{ 'templates.contact.form.send' | t }}
+          </button>
+          <a href="{{ routes.account_url }}" class="back-to-my-drew tw-hidden tw-flex-row tw-items-center tw-justify-start tw-gap-[8px] tw-text-[14px] tw-w-full tw-text-left tw-text-slate-500 tw-hover:text-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <mask id="mask0_2842_6224" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+                <path d="M0.396484 0.149414H24.3965V24.1494H0.396484V0.149414Z" fill="#D9D9D9"/>
+              </mask>
+              <g mask="url(#mask0_2842_6224)">
+                <path d="M10.3965 18.1494L11.7965 16.6994L8.24648 13.1494H20.3965V11.1494H8.24648L11.7965 7.59941L10.3965 6.14941L4.39648 12.1494L10.3965 18.1494Z" fill="#64748B"/>
+              </g>
+            </svg>              
+            back to My DREW
+          </a>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const sn = urlParams.get('sn');
+  if (sn) {
+    // Note: The commented-out 'Serial Number' input field would need to be re-enabled for this to work.
+    // document.getElementById('ContactForm-serial').value = sn;
+    
+    const backButton = document.querySelector('.back-to-my-drew');
+    if (backButton) {
+      backButton.classList.remove('tw-hidden');
+      backButton.classList.add('tw-flex');
+    }
+  }
+</script>
+
+{% schema %}
+  {
+    "name": "Contact Us EXP",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color Scheme"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_left",
+        "label": "Image Left",
+        "info": "Min: 800 x 1000 pixel"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "cs_email",
+        "label": "Customer Service Email",
+        "default": "customercare@tmc-indonesia.com"
+      },
+      {
+        "type": "header",
+        "content": "Section Form Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "default": 56,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "default": 56,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px"
+      }
+    ],
+    "presets": [
+    {
+      "name": "Contact Us custom"
+    }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,555 @@
+
+
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "faq_dropdown_registration": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Do I have to register as a member to shop on BricksActive.id?",
+            "answer": "<p>You need to register as a member to shop on BricksActive.id. If you register as a member of BricksActive.id, you will enjoy various benefits such as:</p><ul><li>Faster checkout for next order</li><li>Saving more than 1 delivery address on your account</li><li>Update your account information</li><li>Track your order status</li><li>View previous orders</li><li>The option to subscribe to our newsletter, where you will get a large selection of new products, promotions, special prices, events and other interesting offers.</li></ul>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How to register as a member of BricksActive.id?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click “Register” on the website’s right top corner</li><li>Fill in the detail and click \"Create An Account\"</li><li>You can start shopping and will receive a confirmation email from BricksActive.id.</li></ul><p>Please Click <a href=\"#\" title=\"Registration\">here</a> for registration.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How to update my account?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click “Sign In” on website’s right top corner, fill in your registered email and password, and click “Sign In”</li><li>Click “Account Information” menu to update your personal information, and click “Change” for information you wish to update then click ‘’Save’’</li></ul><p>Please click <a href=\"#\" title=\"Update Account\">here</a> to update your account.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What if I forget my password?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click “Login” on the website’s right top corner</li><li>Click “Forgot Your Password?”</li><li>Fill in your registered email address</li><li>Click “Reset My Password”</li><li>You will receive a password reset link on your registered email</li></ul><p>Please click <a href=\"#\" title=\"Reset Password\">here</a> to reset your password.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How to update delivery address?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click “Sign In” on website’s right top corner, fill in your registered email and password and click “Sign In”</li><li>Click “Address Book” to update your personal information</li><li>Choose “Change Billing Address” for information you wish to update or “Add New Address” to save more than one delivery address.</li></ul><p>Please click <a href=\"#\" title=\"Update Delivery Address\">here</a> to update your delivery address.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5"
+      ],
+      "settings": {
+        "column_title": "REGISTRATION",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_order": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How to shop on BricksActive.id?",
+            "answer": "<p>You can shop your favorite products easily, just follow these simple steps:</p><ul><li>Select the product you wish to purchase</li><li>Select the size, and then choose “Add to Cart”</li><li>To add more products, repeat step 1 & 2</li><li>Once you finish, click “Shopping Bag Icon” on the right top corner of the website</li><li>Review the cart</li><li>Click “Buy Now” to finish shopping and make payment</li><li>Fill in your valid email address and the detail of delivery address if you checkout as a guest. You can also login to your registered account at BricksActive.id by clicking “Login”.</li><li>Complete your delivery address and delivery method.</li><li>Review your order and make sure that the products quantities and sizes are correct, and then choose “Next”</li><li>Choose one of the payment methods below:<ul><li>Virtual Account (BCA)</li><li>Credit Card (VISA, JCB, and Mastercard)</li></ul></li><li>Click “Place Order” and finish your payment.</li><li>You will receive the order status notification on your email</li></ul><p>Please click <a href=\"#\" title=\"Start Shopping\">here</a> to start shopping.</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What are the shopping methods at BricksActive.id?",
+            "answer": "<p>You can shop at BricksActive.id with the following methods:</p><ul><li>Through our official website at BricksActive.id</li><li>At our retail stores</li></ul><p>Please click <a href=\"#\" title=\"Our Locations\">here</a> to view all our locations.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What if my paid order cannot be fulfilled?",
+            "answer": "<p>If you have paid the order, we will process your refund via the original payment method of your order, such as credit card return, or funds transfer to your bank account for Virtual Account payment.</p><p><strong>Note:</strong> The refund process takes 7 to 14 working days, depending on the refund payment method. We will process your refund as soon as we receive your account information details based on the payment method selected during your initial purchase.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click \"Track Order\" on the right top corner</li><li>Input your Order ID number</li><li>Make sure the Order ID is the same with the one sent to your email address</li><li>Click \"Search\"</li><li>Delivery status information will show according to the order ID number you have entered</li></ul><p>Please click <a href=\"#\" title=\"Track Order\">here</a> to track your order.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4"
+      ],
+      "settings": {
+        "column_title": "ORDER",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_product": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Are the products sold on website different with those on offline store?",
+            "answer": "<p>Most of our product are same between but in certain collections some products may be available exclusively on either one of the channels.</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Are there any price differences between online and offline store products?",
+            "answer": "<p>Prices may change at any time due to promotions. The promotional price offered for a certain product is valid for a limited period. We recommend you to become a member of BricksActive.id and register for our newsletter to receive regular promotional information.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Why do product prices at BricksActive.id change frequently?",
+            "answer": "<p>Prices may change at any time due to promotions. The promotional price offered for a certain product is valid for a limited period. We recommend you to become a member of BricksActive.id and register for our newsletter to receive regular promotional information.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Are the product sold authentic/original?",
+            "answer": "<p>We make sure all products sold in our official store are original products.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Is the product available?",
+            "answer": "<p>The products we have on our website are constantly being updated, therefore we cannot ensure product availability. Products are available if the size or product can be selected or added to the cart, if the product and size cannot be clicked, then the stock is not available.</p>"
+          }
+        },
+        "block_6": {
+          "type": "dropdown",
+          "settings": {
+            "question": "When will BricksActive.id products be available?",
+            "answer": "<p>We cannot confirm when and whether the product will be available. Please check our website regularly and sign up for our newsletter as we continue to update on the latest products and promotions.</p>"
+          }
+        },
+        "block_7": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Which countries are the products made in?",
+            "answer": "<p>All products from the Asia Region are manufactured in China, Vietnam, India and Indonesia. The products will be sent in random order and based on product stock availability, therefore we cannot confirm which country-made product will be sent to you.</p>"
+          }
+        },
+        "block_8": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I get a shopping bag for my purchase?",
+            "answer": "<p>We apologize, we do not provide shopping bags for online purchases.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7",
+        "block_8"
+      ],
+      "settings": {
+        "column_title": "PRODUCT",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_payment": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Which payment methods are available?",
+            "answer": "<p>The payment methods available are:</p><ul><li>Virtual Account (BCA)</li><li>Credit Card (VISA, JCB, and Mastercard)</li></ul>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How to make a Virtual Account payment?",
+            "answer": "<p>Select Payment Method > Virtual Account > Place Order</p><p><strong>Note:</strong> If you wish to use your Voucher Code /Discount Code, please insert your code in the box on the cart page and click \"Apply\". If your Voucher Code is in accordance to our Terms and Conditions, the discount will be applied and it will deduct the payment amount.</p><p>If you wish to use your MAPCLUB Points, please sign in with your phone number and password. Then, you can decide how many points you wish to use.</p><p>After you click \"Place Order\", you will be directed to another page with order and payment details information. Here you will get your Virtual Account number details for your payment purposes.</p><ul><li>Input Virtual Account number 123xxxxxxx (as shown on detail transaction page) and click \"Yes\"</li><li>Check the data on screen, make sure the name shown is BricksActive.id and the total amount is correct. Continue by clicking \"Yes\".</li></ul><p><strong>Note:</strong> Make sure to make the payment within 1x24 hours to avoid automatic cancellation by our system.</p><p>After completing all steps successfully, you will receive a confirmation email from BricksActive.id, and your order will be processed.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Is there a time limit for payments using Virtual Account?",
+            "answer": "<p>Yes, the payment time limit is 1x24 hours after you place an order.</p><p>Your order will be automatically cancelled by the system if no payment has been made within the specified time limit.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How do I make a Credit Card payment?",
+            "answer": "<p>Select Payment Method > Credit Card > Place Order</p><p><strong>Note:</strong>If you wish to use your Voucher Code /Discount Code, please insert your code in the box on the cart page and click \"Apply\". If your Voucher Code is in accordance with our Terms and Conditions, the discount will be applied and it will deduct the payment amount.</p><p>If you wish to use your MAPCLUB Points, please sign in with your phone number and password. Then, you can decide how many points you wish to use.</p><ul><li>Payment for credit card transaction is made through our secure payment link for VISA , JCB & MasterCard</li><li>Enter cardholder name, number, expiry date, and CVV number and choose \"Continue\"</li><li>If your card has a 3D Security System feature, you will receive an SMS verification code from the bank. Use it to continue the transaction.</li></ul><p>After completing all steps successfully, you will receive a confirmation email from BricksActive.id, and your order will be processed.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How can I be sure that my personal data will not be misused?",
+            "answer": "<p>Yes, you have to input your card number every time you make a payment using Credit Card. We guarantee the security of our systems and the confidentiality of your personal data. We also work with internet service providers that have been equipped with 3D security systems to prevent any fraudulent attempt. This technology ensures the full confidentiality and security of all customer data.</p>"
+          }
+        },
+        "block_6": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I make a payment with credit card instalments?",
+            "answer": "<p>We apologize, currently BricksActive.id does not accept payments with Credit Card instalments. We will soon add this facility to provide you with additional shopping convenience and experience.</p>"
+          }
+        },
+        "block_7": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I use MAPCLUB Points on BricksActive.id?",
+            "answer": "<p>Yes, you can now earn and burn your MAPCLUB Points during transaction at BricksActive.id.</p><p><strong>Terms and Conditions:</strong></p><p><strong>MAPCLUB POINTS EARN:</strong></p><ul><li>MAPCLUB POINTs will only be earned for orders which are successfully delivered</li><li>Points will be earned on full transaction value paid nett of VAT.</li><li>If a product is returned, the MAPCLUB Points earned will be reversed for each individual product returned.</li><li>In the event that a product and your MAPCLUB account goes into a negative balance after reversing the earned points, MAPCLUB reserves the right to contact you to pay the equivalent of the points in negative balance and/or suspend/cancel your membership.</li><li>MAPCLUB Points will be credited 30 days after product is delivered.</li></ul><p><strong>MAPCLUB POINTS BURN:</strong></p><ul><li>For any cancelled orders, the MAPCLUB Points will be automatically cancelled, or, prorated amount if there is a partial cancellation.</li><li>Once returns are approved, points redeemed on the transaction will be reversed in 7 days on a prorate basis</li></ul><p>Please click <a href=\"#\" title=\"MAPCLUB Information\">here</a> for more information on MAPCLUB.</p>"
+          }
+        },
+        "block_8": {
+          "type": "dropdown",
+          "settings": {
+            "question": "I'm having payment problems, what's the solution?",
+            "answer": "<p>Please ensure that you have followed all the payment steps in accordance with the payment method and all the payment data you have entered is correct. If you are still having problems, please contact us and attach a photo proof of the payment problem.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7",
+        "block_8"
+      ],
+      "settings": {
+        "column_title": "PAYMENT",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_shipping": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What are the delivery methods available at BricksActive.id?",
+            "answer": "<p>We provide the following delivery methods: Home Delivery (Receive the product at the convenience of your home).</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What is Home Delivery?",
+            "answer": "<p>Home Delivery is a shipping method where your ordered product will be delivered by a shipping/delivery partner service.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What is the Receipt Number in the Home Delivery shipping method?",
+            "answer": "<p>Receipt Number is a document containing the order number which is issued by the shipping/delivery partner service when your order is ready to be shipped and serves as proof of delivery.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "When will I get my Receipt Number?",
+            "answer": "<p>Detailed information on the tracking number will be sent to your email address when the order is already in the process of being sent by our shipping/delivery partner.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How much is the shipping/delivery fee?",
+            "answer": "<p>We provide free shipping throughout Indonesia for all purchases on our website.</p>"
+          }
+        },
+        "block_6": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What is the order delivery time?",
+            "answer": "<p>The estimated order delivery time for Jakarta area is 1-4 working days and for outside Jakarta is 2-7 working days. This estimated duration is in accordance with the terms of the shipping/delivery partner service used.</p><p>If your order does not arrive within the specified duration, please contact our Customer Service Team.</p>"
+          }
+        },
+        "block_7": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How can I track my shipment/delivery status?",
+            "answer": "<p>Please follow the steps below:</p><ul><li>Click \"Track Order\" on the right top corner</li><li>Input your Order ID number</li><li>Make sure the Order ID is the same with the one sent to your email address</li><li>Click \"Search\"</li><li>Delivery status information will show according to the order ID number you have entered.</li></ul><p>Please click <a href=\"#\" title=\"Track Order\">here</a> to track your order.</p>"
+          }
+        },
+        "block_8": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What if there is an error in shipping or product damage?",
+            "answer": "<p>We recommend that you contact our Customer Service Team immediately, no later than 14 days after the date the product is received, as stated in our Return Policy.</p><p>Our Customer Service Team will verify and check your order and products details.</p><p>Please keep the product in good condition and in its original packaging.</p><p>Please click <a href=\"#\" title=\"Return Policy\">here</a> for more information on Return Policy.</p>"
+          }
+        },
+        "block_9": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Is it possible to change the address after placing an order?",
+            "answer": "<p>It is not possible to change the address details as order will be shipped according to the address registered in the system. Please make sure all your shipping address data is correct before making a payment.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7",
+        "block_8",
+        "block_9"
+      ],
+      "settings": {
+        "column_title": "SHIPPING/DELIVERY",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_return": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "MANDATORY UNBOXING VIDEO",
+            "answer": "<p>For all returns and exchanges, you are required to record clearly the process of opening the package from start to finish without edit. We do not accept complaints or damage or lack of products without unboxing video.</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I return the products I have purchased?",
+            "answer": "<p>Yes, you can with the following Terms and Conditions:</p><ul><li>Products purchased at full price and with a maximum 30% discount. We do not accept returns for products which have been purchased at more than 30% discount during promotion period.</li><li>Products must have never been used and must still be in its original condition, complete with labels attached to the product and without damage.</li><li>Product must not have stains, broken seams, missing buttons, loosened threads or other conditions that deem the product to be defective or damaged.</li><li>Products must have its brand box and packaging in its original condition. The box and packaging must not be broken or dented, not attached to any adhesive material, and complete with other items from the original packaging such as cartons, clothes hangers, stickers, ribbons, ropes, polybags, plastic, and other objects.</li><li>Request for product return must be made within 14 days of when the order is received. Returned products must be received at the pre-determined location no later than 7 days after the date of return is approved by BricksActive.id</li><li>When returning the product, please use the outer packaging/box as we sent you and cover the product packaging with a sturdy wrapper and add a \"FRAGILE\" sticker to avoid original boxes broken during shipment. We do not accept any form of return where there is damage to the product and the product packaging/box.</li><li>Refund process takes 7 to 14 working days. It may vary depending on the refund method. Refund will be made as soon as we have received the returned products and according to your initial payment method selected during purchase. We do not refund the shipping costs of returned products.</li><li>Request for exchange due to color differences between the received physical product and product photo caused by lighting effects or computer screens are not allowed.</li><li>Request for exchange due to incorrect purchase or change of mind after purchasing is not allowed. We strongly advise to review your cart before completing the order.</li><li>Request for exchange is not applicable for swimwear, sports bra, sports apparel, tight clothing (including legging, compression, cycling pants), socks, fitness equipment, sports accessories (including hats), and other products or brands with specific Terms and Conditions and stated clearly on its description.</li></ul><p>Please contact our Customer Service Team to submit the return request.</p><p>Please click <a href=\"#\" title=\"Return Policy\">here</a> for more information on Return Policy.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "When can I make a product return request?",
+            "answer": "<p>Request for product return must be made within 14 days of when the order is received. Returned products must be received at the pre-determined location no later than 7 days after the date of return is approved by BricksActive.id.</p><p>Please click <a href=\"#\" title=\"Return Policy\">here</a> for more information on Return Policy.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What products cannot be submitted for returns and exchanges?",
+            "answer": "<p>Requests for returns and exchanges are not applicable for swimwear, sports bra, sports apparel, tight clothing (including legging, compression, cycling pants), socks, fitness equipment, sports accessories (including hats), and other products or brands with specific Terms and Conditions and stated clearly on its description.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "How do I make a product return request?",
+            "answer": "<p>Please contact our Customer Service Team to make a return request.</p><p><strong>Note:</strong> Request for product return must be made within 14 days of when the order is received. Returned products must be received at the pre-determined location no later than 7 days after the date of return is approved by BricksActive.id.</p><p>Please click <a href=\"#\" title=\"Return Policy\">here</a> for more information on Return Policy.</p>"
+          }
+        },
+        "block_6": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What are the rules for returning products purchased with a bundling promo?",
+            "answer": "<p>Products purchased on promotional basis are non-refundable.</p>"
+          }
+        },
+        "block_7": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Can I exchange the product I have purchased?",
+            "answer": "<p>Exchanges are valid for products with the following criterias:</p><p><strong>Incorrect Size</strong></p><ul><li>Product received does not match customer's order: e.g., the customer ordered number 30, but received size 32.</li><li>Different sizes between the physical product and the packaging/box.</li><li>Different sizes between left and right (e.g.,: shoes, sandals).</li><li>Product received is the same side (both shoes/sandals are both right or left sides).</li></ul><p><strong>Incorrect Color</strong></p><ul><li>Product color is not the same as stated in the product description: e.g., a customer ordered blue shoes, but received red shoes.</li></ul><p><strong>Damage/Defective</strong></p><ul><li>Product color: Faded or different color.</li><li>Product material: Peeled leather, torn material, loose stitches or knitting, stained or deformed parts, torn or punctured material.</li><li>Parts of the product: Loose buttons, broken zippers, missing pieces/parts, broken handles, cannot be pumped (for balls).</li></ul><p>Requests to exchange products with other sizes or colors or types/models are not allowed. However, you may return your product for a full refund (provided that the exchanged product meets the criteria) and place a new order. Product exchange can only be done with the same product (same SKU, same size, same color, etc.).</p><p>Request for product exchange must be made within 14 days after the order is received. Exchanged products must be received at the pre-determined location no later than 7 days after the exchange date is approved by BricksActive.id.</p><p>When exchanging the products, please use the outer packaging/box as we sent you and cover the product packaging with a sturdy wrapper \"FRAGILE\" sticker to avoid damage on the original box during shipment We do not accept any form of exchanges where there is damage to the product and the product packaging/box.</p><p><strong>Exceptions</strong></p><ul><li>We do not allow exchange requests based on the color difference between the physical product received and the product photo caused by lighting effects or computer screens.</li><li>We do not allow exchange requests based on a wrong purchase or a change of mind after purchase. We strongly recommend you to review the shopping cart before completing an order.</li><li>Exchange requests do not apply to swimwear, sports bras, sportswear, tights (including tights/leggings, compression/compression pants, cycling shorts), socks, fitness equipment, sports accessories (including hats), and other products or brands with specific Terms and Conditions and which have been stated clearly in the description.</li></ul><p>Please contact our Customer Service Team to submit the exchange request.</p><p>Please click <a href=\"#\" title=\"Return Policy\">here</a> for more information on Return Policy.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7"
+      ],
+      "settings": {
+        "column_title": "RETURN/EXCHANGE",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_refund": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What refund methods are available at BricksActive.id?",
+            "answer": "<p>We will process your refund based on the payment method selected during your initial purchase, namely the refund of the Credit Card for the Credit Card payment method, or fund transfer for the Bank Transfer. Refunds cannot be made in cash.</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Will I be reimbursed for shipping fee of returning the product?",
+            "answer": "<p>We apologize, we do not reimburse the shipping fee for returned products.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "When will I receive my refund?",
+            "answer": "<p>The refund process takes 7 to 14 working days, depending on the refund payment method. We will process your refund as soon as we receive the returned product from you and the account information details based on the initial payment method selected during your purchase. Shipping fees for returned products will not be included in the refund.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What are the refund rules regarding product returns or orders cannot be fulfilled by BricksActive.id?",
+            "answer": "<p>Refunds will be processed according to the bill/amount you paid, excluding discounts from e-Vouchers/coupons.</p>"
+          }
+        },
+        "block_5": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What shipping methods are available for product returns?",
+            "answer": "<p>You may return the product via our delivery partner. Please inform our Customer Service Team for product returns request.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5"
+      ],
+      "settings": {
+        "column_title": "REFUND",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "faq_dropdown_others": {
+      "type": "faq-dropdown",
+      "blocks": {
+        "block_1": {
+          "type": "dropdown",
+          "settings": {
+            "question": "What promotions are currently available?",
+            "answer": "<p>You can get information about ongoing promotions through the banner on the store's website main page. We always provide information on the latest products and promotions on this page.</p><p>Please click <a href=\"#\" title=\"Ongoing Promotions\">here</a> to see our ongoing promotions.</p>"
+          }
+        },
+        "block_2": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Voucher Code cannot be used",
+            "answer": "<p>Please refer to the validity period, as well as the voucher's Terms and Conditions.</p>"
+          }
+        },
+        "block_3": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Store Location information",
+            "answer": "<p>Please click <a href=\"#\" title=\"Store Location\">here</a> for more information on our store location.</p>"
+          }
+        },
+        "block_4": {
+          "type": "dropdown",
+          "settings": {
+            "question": "Job vacancy information",
+            "answer": "<p>For information on job vacancies, please visit our website <a href=\"#\" title=\"Job Vacancy\">here</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4"
+      ],
+      "settings": {
+        "column_title": "OTHERS",
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq_dropdown_registration",
+    "faq_dropdown_order",
+    "faq_dropdown_product",
+    "faq_dropdown_payment",
+    "faq_dropdown_shipping",
+    "faq_dropdown_return",
+    "faq_dropdown_refund",
+    "faq_dropdown_others"
+  ]
+}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
