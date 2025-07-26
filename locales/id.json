@@ -535,5 +535,22 @@
       "expanded": "Formulir penerima voucher dibuka",
       "collapsed": "Formulir penerima voucher ditutup"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "local_pickup": {
+        "location_information_next": {
+          "one": "Ada %{count} lokasi dengan stok di dekat Anda",
+          "other": "Ada %{count} lokasi dengan stok di dekat Anda"
+        }
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "signature_mismatch": "Ketidakcocokan tanda tangan barang dagangan untuk baris {{stable_id}} ."
+          }
+        }
+      }
+    }
   }
 }
