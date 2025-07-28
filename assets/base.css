@@ -469,7 +469,7 @@ table:not([class]) th {
 a:empty,
 ul:empty,
 dl:empty,
-div:empty,
+
 section:empty,
 article:empty,
 p:empty,
@@ -481,6 +481,7 @@ h5:empty,
 h6:empty {
   display: none;
 }
+/* div:empty, */
 
 .link,
 .customer a {
@@ -3625,9 +3626,3 @@ header .header__inline-menu {
   align-items: end;
 }
 
-button.chat-toggle.chat-toggle--text-button {
-  padding-right: 3px;
-}
-button.chat-toggle.chat-toggle--text-button .chat-title{
-  display: none !important;
-}

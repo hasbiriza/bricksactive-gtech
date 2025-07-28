@@ -1,0 +1,212 @@
+<style>
+  .hero-video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 750px;
+    overflow: hidden;
+    background-color: #1c1c1c;
+  }
+
+  .hero-video__media {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-video__media--desktop {
+    display: block;
+  }
+
+  .hero-video__media--mobile {
+    display: none;
+  }
+
+  .hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .hero-video-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .hero-video-content__heading {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .hero-video-content__subheading {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  .hero-video-cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .hero-video-cta:hover {
+    background-color: #ffffff;
+    color: #1c1c1c;
+  }
+
+  @media (max-width: 768px) {
+    .hero-video-wrapper {
+      height: 70vh;
+    }
+
+    .hero-video__media--desktop {
+      display: none;
+    }
+
+    .hero-video__media--mobile {
+      display: block;
+    }
+
+    .hero-video-content__heading {
+      font-size: 2.25rem;
+    }
+
+    .hero-video-content__subheading {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<div class="hero-video-wrapper" data-section-id="{{ section.id }}">
+  {%- if section.settings.video != blank -%}
+    {{ section.settings.video | video_tag: class: 'hero-video__media hero-video__media--desktop', autoplay: true, loop: true, muted: true, playsinline: true, preload: 'metadata' }}
+  {%- endif -%}
+
+  {%- if section.settings.fallback_image != blank -%}
+        {{ section.settings.fallback_image | image_url: width: 1600 | image_tag: 
+            class: 'hero-video__media hero-video__media--mobile', 
+            alt: section.settings.fallback_image.alt | default: 'Hero background image', 
+            loading: 'lazy', 
+            width: 1600, 
+            height: 900 
+        }}
+  {%- endif -%}
+
+  <div class="hero-video-overlay" style="background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity }});"></div>
+
+  <div class="hero-video-content">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="hero-video-content__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheading != blank -%}
+      <div class="hero-video-content__subheading">{{ section.settings.subheading }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.cta_text != blank and section.settings.cta_link != blank -%}
+      <a href="{{ section.settings.cta_link }}" class="hero-video-cta">
+        {{ section.settings.cta_text | escape }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Video",
+  "tag": "section",
+  "class": "section-hero-video",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video & Image"
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "label": "Background Video",
+      "info": "For desktop view. Autoplays muted. Uploaded from Shopify Files."
+    },
+    {
+      "id": "fallback_image",
+      "type": "image_picker",
+      "label": "Mobile Fallback Image",
+      "info": "Displayed on mobile devices instead of the video."
+    },
+    {
+      "type": "header",
+      "content": "Content & Overlay"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Showcase Your Brand"
+    },
+    {
+      "id": "subheading",
+      "type": "richtext",
+      "label": "Subheading",
+      "default": "<p>Use a stunning video to capture attention.</p>"
+    },
+    {
+      "id": "overlay_opacity",
+      "type": "range",
+      "label": "Video Overlay Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.3
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Button"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "id": "cta_link",
+      "type": "url",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Video"
+    }
+  ]
+}
+{% endschema %}
