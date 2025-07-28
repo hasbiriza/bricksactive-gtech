@@ -3624,3 +3624,10 @@ header .header__inline-menu {
   height: 100%;
   align-items: end;
 }
+
+button.chat-toggle.chat-toggle--text-button {
+  padding-right: 3px;
+}
+button.chat-toggle.chat-toggle--text-button .chat-title{
+  display: none !important;
+}

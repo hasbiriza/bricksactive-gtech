@@ -9,14 +9,27 @@
  */
 {
   "sections": {
-    "custom_liquid_FnXXtm": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
+    "rich_text_AejD76": {
+      "type": "rich-text",
+      "blocks": {
+        "text_VAydAL": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"https://www.bricksactive.id/lego-playground.html\" target=\"_blank\">LEGO® Playground - Discount up to 30% Off</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_VAydAL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-50e01c06-ef0a-4c04-ae33-98c57bf92bfc",
+        "full_width": true,
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "image_banner": {
@@ -88,7 +101,7 @@
     }
   },
   "order": [
-    "custom_liquid_FnXXtm",
+    "rich_text_AejD76",
     "image_banner",
     "featured_collection"
   ]

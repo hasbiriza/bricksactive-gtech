@@ -98,6 +98,32 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  sticky-header .announcement-bar {
+    background-color: {{ section.settings.announcement_bg_color | default: '#000000' }};
+    color: {{ section.settings.announcement_text_color | default: '#ffffff' }};
+    text-align: center;
+    padding: {{ section.settings.announcement_padding | default: 10 }}px 20px;
+    font-size: {{ section.settings.announcement_font_size | default: 14 }}px;
+    font-weight: {{ section.settings.announcement_font_weight | default: 'normal' }};
+    position: relative;
+    overflow: hidden;
+    padding-top:0px;
+  }
+
+  sticky-header .announcement-content {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+ sticky-header .announcement-content.fade-out {
+    opacity: 0;
+  }
+
+sticky-header .announcement-content.fade-in {
+    opacity: 1;
+  }
+
+  
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -303,6 +329,22 @@
       </a>
     </div>
   </header>
+  {% if header_tag == 'sticky-header' %} 
+    {%- if section.settings.enable_announcement and section.settings.announcement_text != blank -%}
+  <div
+    class="announcement-bar"
+    id="announcement-bar"
+    data-announcement-text="{{ section.settings.announcement_text | escape }}"
+    data-announcement-rotation="{{ section.settings.announcement_rotation_time | default: 5 }}"
+  >
+    <div class="announcement-content" id="announcement-content">
+      {%- assign announcement_texts = section.settings.announcement_text | split: ',' -%}
+      {{ announcement_texts[0] | strip }}
+    </div>
+  </div>
+{%- endif -%}
+
+  {% endif %}
 </{{ header_tag }}>
 
 {%- if settings.cart_type == 'notification' -%}
@@ -344,7 +386,42 @@
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
+      this.initAnnouncementBar();
     }
+
+   initAnnouncementBar() {
+  const announcementBar = document.getElementById('announcement-bar');
+  const announcementContent = document.getElementById('announcement-content');
+
+  if (!announcementBar || !announcementContent) return;
+
+  const announcementText = announcementBar.dataset.announcementText;
+  const rotationInterval = parseInt(announcementBar.dataset.announcementRotation, 10) * 1000;
+
+  if (!announcementText) return;
+
+  const texts = announcementText.split(',').map(text => text.trim()).filter(text => text.length > 0);
+
+  if (texts.length <= 1) return;
+
+  let currentIndex = 0;
+
+  const rotateAnnouncement = () => {
+    announcementContent.classList.add('fade-out');
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % texts.length;
+      announcementContent.textContent = texts[currentIndex];
+      announcementContent.classList.remove('fade-out');
+      announcementContent.classList.add('fade-in');
+      setTimeout(() => {
+        announcementContent.classList.remove('fade-in');
+      }, 500);
+    }, 250);
+  };
+
+  setInterval(rotateAnnouncement, rotationInterval);
+}
+
 
     setHeaderHeight() {
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
@@ -425,6 +502,7 @@
 
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
+
 
 <script type="application/ld+json">
   {
@@ -647,6 +725,80 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Announcement Bar Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "default": false,
+      "label": "Enable Announcement Bar"
+    },
+    {
+      "type": "textarea",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "info": "Separate multiple announcements with commas (e.g., Free Shipping,New Collection,Sale 50% Off)"
+    },
+    {
+      "type": "range",
+      "id": "announcement_rotation_time",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "label": "Rotation Time",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "announcement_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "announcement_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "announcement_font_weight",
+      "options": [
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        }
+      ],
+      "default": "normal",
+      "label": "Font Weight"
+    },
+    {
+      "type": "range",
+      "id": "announcement_padding",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding",
+      "default": 10
     }
   ],
   "blocks": [

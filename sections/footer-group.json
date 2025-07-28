@@ -18,28 +18,47 @@
           "type": "link_list",
           "settings": {
             "heading": "About",
-            "menu": "footer"
+            "menu": "footer",
+            "max_width_desktop": 150,
+            "padding_right_desktop": 20
           }
         },
         "link_list_Km8GDY": {
           "type": "link_list",
           "settings": {
             "heading": "Customer Care",
-            "menu": "customer-care"
+            "menu": "customer-care",
+            "max_width_desktop": 150,
+            "padding_right_desktop": 20
           }
         },
         "link_list_ADmJrG": {
           "type": "link_list",
           "settings": {
             "heading": "Top  Sales",
-            "menu": "top-sales"
+            "menu": "top-sales",
+            "max_width_desktop": 410,
+            "padding_right_desktop": 20
           }
         },
         "link_list_MBc9X7": {
           "type": "link_list",
           "settings": {
             "heading": "Popular Links",
-            "menu": "popular-links"
+            "menu": "popular-links",
+            "max_width_desktop": 180,
+            "padding_right_desktop": 15
+          }
+        },
+        "newsletter_GhaHtk": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "OUR STORE",
+            "newsletter_heading": "Newsletter",
+            "newsletter_subheading": "",
+            "subheading_content": "",
+            "max_width_desktop": 320,
+            "padding_right_desktop": 15
           }
         }
       },
@@ -47,18 +66,13 @@
         "link_list_3JEpAp",
         "link_list_Km8GDY",
         "link_list_ADmJrG",
-        "link_list_MBc9X7"
+        "link_list_MBc9X7",
+        "newsletter_GhaHtk"
       ],
       "settings": {
         "color_scheme": "scheme-76bdbdbb-a0b5-4789-8a6d-5f5af41178ea",
-        "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": false,
         "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
         "payment_enable": false,
-        "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36

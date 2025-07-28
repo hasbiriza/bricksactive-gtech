@@ -51,7 +51,15 @@
         "enable_customer_avatar": true,
         "margin_bottom": 0,
         "padding_top": 20,
-        "padding_bottom": 20
+        "padding_bottom": 20,
+        "enable_announcement": true,
+        "announcement_text": "Free Shipping - On all order, Welcome To Our Store",
+        "announcement_rotation_time": 5,
+        "announcement_bg_color": "#f8d748",
+        "announcement_text_color": "#121212",
+        "announcement_font_size": 14,
+        "announcement_font_weight": "normal",
+        "announcement_padding": 10
       }
     }
   },
