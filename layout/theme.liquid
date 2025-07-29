@@ -38,7 +38,7 @@
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
+     <link rel="stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}">
     {{ content_for_header }}
 
     {%- liquid
@@ -298,7 +298,7 @@
       }
     </script>
 
-    <link rel="stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}">
+   
     <script defer="defer" src="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
 
   </head>

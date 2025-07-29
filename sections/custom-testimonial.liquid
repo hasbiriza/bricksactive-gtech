@@ -11,7 +11,7 @@
           <div class="swiper-slide">
             <div class="testimonial-card">
               <div class="testimonial-avatar">
-                <img src="{{ testimonial.avatar | img_url: '160x160' }}" alt="{{ testimonial.name }}">
+                <img src="{{ testimonial.avatar | img_url: '160x160' }}" alt="{{ testimonial.name }}"  width="{{ testimonial.width }}" height="{{ testimonial.height }}">
               </div>
               <div class="testimonial-stars">
                 {% assign filled_stars = testimonial.stars | plus: 0 %}
@@ -29,7 +29,6 @@
           </div>
         {% endfor %}
       </div>
-      <!-- Add Arrows -->
       <div class="testimonial-nav testimonial-prev swiper-button-prev"></div>
       <div class="testimonial-nav testimonial-next swiper-button-next"></div>
       <!-- (Dots) -->
@@ -38,162 +37,163 @@
   </div>
 </section>
 
-<style>
-    .swiper-slide-active .testimonial-card {
+{%stylesheet %}
+
+
+ .swiper-slide-active .testimonial-card {
   background: #fffde8;
-}
+ }
 
-.testimonial-carousel-section {
-  background: #fff;
-  padding: 64px 0 48px 0;
-  width: 100%;
-}
-.testimonial-carousel-wrapper {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  position: relative;
-}
-.testimonial-section-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 32px;
-}
-.testimonial-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fafbfc;
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.09);
-  padding: 40px 32px 32px 32px;
-  margin: 12px 0;
-  min-height: 340px;
-}
-.testimonial-avatar img {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-}
-.testimonial-stars {
-  margin-bottom: 20px;
-  font-size: 20px;
-}
-.star {
-  color: #FDBA20;
-  margin: 0 1.5px;
-}
-.star.inactive {
-  color: #e4e4e4;
-}
-.testimonial-quote {
-  font-size: 18px;
-  font-weight: 500;
-  color: #222;
-  text-align: center;
-  margin-bottom: 16px;
-  line-height: 1.4;
-}
-.testimonial-name {
-  font-size: 16px;
-  color: #555;
-  margin-top: 10px;
-  font-weight: 600;
-  text-align: center;
-}
-/* Swiper Arrow style */
-.testimonial-nav {
-  background: #fff;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  width: 38px;
-  height: 38px;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 10;
-  transition: box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.testimonial-nav:active {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-.swiper-button-prev, .swiper-button-next {
-  top: 35%;
-  color: #333;
-}
-.swiper-button-prev { left: -50px; }
-.swiper-button-next { right: -50px; }
-@media (max-width: 900px) {
-  .testimonial-carousel-wrapper { max-width: 100%; }
-  .testimonial-card { padding: 30px 12px 24px 12px; }
-  .swiper-button-prev { left: 0; }
-  .swiper-button-next { right: 0; }
-}
-
-@media (max-width: 900px) {
-  .testimonial-carousel-wrapper { max-width: 100%; }
-  .testimonial-card { padding: 30px 12px 24px 12px; }
-  .swiper-button-prev { left: 0; }
-  .swiper-button-next { right: 0; }
-  /* Arrow ukuran kecil di tablet/mobile */
-  .testimonial-nav,
-  .swiper-button-prev, .swiper-button-next {
-    width: 28px;
-    height: 28px;
+  .testimonial-carousel-section {
+    background: #fff;
+    padding: 64px 0 48px 0;
+    width: 100%;
+  }
+  .testimonial-carousel-wrapper {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    position: relative;
+  }
+  .testimonial-section-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fafbfc;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+    padding: 40px 32px 32px 32px;
+    margin: 12px 0;
+    min-height: 340px;
+  }
+  .testimonial-avatar img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .testimonial-stars {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .star {
+    color: #FDBA20;
+    margin: 0 1.5px;
+  }
+  .star.inactive {
+    color: #e4e4e4;
+  }
+  .testimonial-quote {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222;
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .testimonial-name {
     font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    color: #555;
+    margin-top: 10px;
+    font-weight: 600;
+    text-align: center;
   }
-}
-@media (max-width: 600px) {
-  /* Arrow lebih kecil dan naik sedikit */
-  .testimonial-nav,
+  .testimonial-nav {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+    transition: box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .testimonial-nav:active {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  }
   .swiper-button-prev, .swiper-button-next {
-    width: 22px !important;
-    height: 22px !important;
-    font-size: 13px;
-    top: 33%;
+    top: 35%;
+    color: #333;
   }
-}
-</style>
+  .swiper-button-prev { 
+    left: -50px; 
+  }
+  .swiper-button-next { 
+    right: -50px;
+  }
+
+  @media (max-width: 900px) {
+    .testimonial-carousel-wrapper { 
+      max-width: 100%; 
+    }
+    .testimonial-card { 
+      padding: 30px 12px 24px 12px;
+     }
+    .swiper-button-prev { 
+      left: 8px;
+     }
+    .swiper-button-next { 
+      right: 8px; 
+    }
+    .testimonial-nav{
+      width: 28px;
+      height: 28px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      top: 25% !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .testimonial-nav{
+      width: 22px !important;
+      height: 22px !important;
+    }
+  }
+{% endstylesheet %}
 
 {% javascript %}
-document.addEventListener('DOMContentLoaded', function() {
-  new Swiper('.testimonial-swiper', {
-    loop: true,
-    centeredSlides: true,
-    autoplay: { delay: 4000, disableOnInteraction: false },
-    slidesPerView: 1,
-    spaceBetween: 32,
-    navigation: {
-      nextEl: '.testimonial-next',
-      prevEl: '.testimonial-prev'
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    effect: 'coverflow',
-    coverflowEffect: {
-      rotate: 0,     // sudut rotasi slide samping, 0=tidak miring, 20-50=lebih dramatis
-      stretch: 0,    // jarak antar slide, boleh 0
-      depth: 100,    // kedalaman efek (coba adjust antara 80-160)
-      modifier: 2,   // seberapa kuat efeknya (default 1, >1 lebih kuat)
-      scale: 0.92,   // scale slide samping (0.8-0.95 biasa)
-      slideShadows: false // true untuk efek shadow, false kalau mau flat
-    },
-    breakpoints: {
-      640: { slidesPerView: 1 },
-      900: { slidesPerView: 3 },
-      1200: { slidesPerView: 4 }
-    }
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.testimonial-swiper', {
+      loop: true,
+      centeredSlides: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      slidesPerView: 1,
+      spaceBetween: 32,
+      navigation: {
+        nextEl: '.testimonial-next',
+        prevEl: '.testimonial-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 0,     // sudut rotasi slide samping, 0=tidak miring, 20-50=lebih dramatis
+        stretch: 0,    // jarak antar slide, boleh 0
+        depth: 100,    // kedalaman efek (coba adjust antara 80-160)
+        modifier: 2,   // seberapa kuat efeknya (default 1, >1 lebih kuat)
+        scale: 0.92,   // scale slide samping (0.8-0.95 biasa)
+        slideShadows: false // true untuk efek shadow, false kalau mau flat
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        900: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 }
+      }
+    });
   });
-});
 {% endjavascript %}
 
 

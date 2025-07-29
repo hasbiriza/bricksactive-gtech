@@ -1,4 +1,4 @@
-<style>
+{% stylesheet  %}  
   .hero-video-wrapper {
     position: relative;
     width: 100%;
@@ -7,6 +7,7 @@
     max-height: 750px;
     overflow: hidden;
     background-color: #1c1c1c;
+    z-index: 1; 
   }
 
   .hero-video__media {
@@ -44,12 +45,25 @@
     z-index: 3;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100%;
     padding: 2rem;
     text-align: center;
     color: #ffffff;
+  }
+
+  .hero-video-content--top {
+    justify-content: flex-start;
+    padding-top: 4rem;
+  }
+
+  .hero-video-content--center {
+    justify-content: center;
+  }
+
+  .hero-video-content--bottom {
+    justify-content: flex-end;
+    padding-bottom: 4rem;
   }
 
   .hero-video-content__heading {
@@ -70,17 +84,20 @@
     padding: 0.75rem 2rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #ffffff;
-    background-color: transparent;
-    border: 2px solid #ffffff;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid;
+    transition: all 0.3s ease;
+    border-radius: 4px;
   }
 
-  .hero-video-cta:hover {
-    background-color: #ffffff;
-    color: #1c1c1c;
+  /* Button style variations */
+  .hero-video-cta--outline {
+    background-color: transparent;
+  }
+
+  .hero-video-cta--filled {
+    border: none;
   }
 
   @media (max-width: 768px) {
@@ -103,29 +120,91 @@
     .hero-video-content__subheading {
       font-size: 1rem;
     }
+
+    .hero-video-content--top {
+      padding-top: 2rem;
+    }
+
+    .hero-video-content--bottom {
+      padding-bottom: 2rem;
+    }
+  }
+{% endstylesheet %}
+
+{% liquid
+  case section.settings.content_position
+    when 'top'
+      assign position_class = 'hero-video-content--top'
+    when 'bottom'
+      assign position_class = 'hero-video-content--bottom'
+    else
+      assign position_class = 'hero-video-content--center'
+  endcase
+
+  # Set button style class
+  case section.settings.button_style
+    when 'filled'
+      assign button_class = 'hero-video-cta--filled'
+    else
+      assign button_class = 'hero-video-cta--outline'
+  endcase
+
+  # Get color values
+  assign text_color = section.settings.text_color | default: '#ffffff'
+  assign button_color = section.settings.button_color | default: '#ffffff'
+  assign button_hover_color = section.settings.button_hover_color | default: '#ffffff'
+  assign button_text_color = section.settings.button_text_color | default: '#ffffff'
+  assign button_hover_text_color = section.settings.button_hover_text_color | default: '#000000'
+%}
+
+<style>
+  #hero-video-{{ section.id }} .hero-video-content {
+    color: {{ text_color }};
+  }
+
+  #hero-video-{{ section.id }} .hero-video-cta {
+    color: {{ button_text_color }};
+    border-color: {{ button_color }};
+    {% if section.settings.button_style == 'filled' %}
+      background-color: {{ button_color }};
+    {% else %}
+      background-color: transparent;
+    {% endif %}
+  }
+
+  #hero-video-{{ section.id }} .hero-video-cta:hover {
+    color: {{ button_hover_text_color }};
+    {% if section.settings.button_style == 'filled' %}
+      border-color: {{ button_hover_text_color }};
+      background-color: transparent;
+    {% else %}
+      border-color: {{ button_hover_color }};
+      background-color: {{ button_hover_color }};
+    {% endif %}
   }
 </style>
 
-<div class="hero-video-wrapper" data-section-id="{{ section.id }}">
+
+<div id="hero-video-{{ section.id }}" class="hero-video-wrapper" data-section-id="{{ section.id }}">
   {%- if section.settings.video != blank -%}
     {{ section.settings.video | video_tag: class: 'hero-video__media hero-video__media--desktop', autoplay: true, loop: true, muted: true, playsinline: true, preload: 'metadata' }}
   {%- endif -%}
 
   {%- if section.settings.fallback_image != blank -%}
-        {{ section.settings.fallback_image | image_url: width: 1600 | image_tag: 
-            class: 'hero-video__media hero-video__media--mobile', 
-            alt: section.settings.fallback_image.alt | default: 'Hero background image', 
-            loading: 'lazy', 
-            width: 1600, 
-            height: 900 
-        }}
+    {{ section.settings.fallback_image | image_url: width: 1600 | image_tag: 
+        class: 'hero-video__media hero-video__media--mobile', 
+        alt: section.settings.fallback_image.alt | default: 'Hero background image', 
+        loading: 'lazy', 
+        width: 1600, 
+        height: 900 
+    }}
   {%- endif -%}
 
   <div class="hero-video-overlay" style="background-color: rgba(0, 0, 0, {{ section.settings.overlay_opacity }});"></div>
 
-  <div class="hero-video-content">
+  <div class="hero-video-content {{ position_class }}">
     {%- if section.settings.heading != blank -%}
-      <h1 class="hero-video-content__heading">{{ section.settings.heading | escape }}</h1>
+      <h1 class="hero-video-content__heading">{{ section.settings.heading }}</h1>
     {%- endif -%}
 
     {%- if section.settings.subheading != blank -%}
@@ -133,80 +212,154 @@
     {%- endif -%}
 
     {%- if section.settings.cta_text != blank and section.settings.cta_link != blank -%}
-      <a href="{{ section.settings.cta_link }}" class="hero-video-cta">
-        {{ section.settings.cta_text | escape }}
+      <a href="{{ section.settings.cta_link }}" class="hero-video-cta {{ button_class }}">
+        {{ section.settings.cta_text }}
       </a>
     {%- endif -%}
   </div>
 </div>
 
 {% schema %}
-{
-  "name": "Hero Video",
-  "tag": "section",
-  "class": "section-hero-video",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Video & Image"
-    },
-    {
-      "id": "video",
-      "type": "video",
-      "label": "Background Video",
-      "info": "For desktop view. Autoplays muted. Uploaded from Shopify Files."
-    },
-    {
-      "id": "fallback_image",
-      "type": "image_picker",
-      "label": "Mobile Fallback Image",
-      "info": "Displayed on mobile devices instead of the video."
-    },
-    {
-      "type": "header",
-      "content": "Content & Overlay"
-    },
-    {
-      "id": "heading",
-      "type": "text",
-      "label": "Heading",
-      "default": "Showcase Your Brand"
-    },
-    {
-      "id": "subheading",
-      "type": "richtext",
-      "label": "Subheading",
-      "default": "<p>Use a stunning video to capture attention.</p>"
-    },
-    {
-      "id": "overlay_opacity",
-      "type": "range",
-      "label": "Video Overlay Opacity",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
-      "default": 0.3
-    },
-    {
-      "type": "header",
-      "content": "Call to Action Button"
-    },
-    {
-      "id": "cta_text",
-      "type": "text",
-      "label": "Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "id": "cta_link",
-      "type": "url",
-      "label": "Button Link"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hero Video"
-    }
-  ]
-}
+  {
+    "name": "Hero Video",
+    "tag": "section",
+    "class": "section-hero-video",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Video & Image"
+      },
+      {
+        "id": "video",
+        "type": "video",
+        "label": "Background Video",
+        "info": "For desktop view. Autoplays muted. Uploaded from Shopify Files."
+      },
+      {
+        "id": "fallback_image",
+        "type": "image_picker",
+        "label": "Mobile Fallback Image",
+        "info": "Displayed on mobile devices instead of the video."
+      },
+      {
+        "type": "header",
+        "content": "Content & Overlay"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Showcase Your Brand"
+      },
+      {
+        "id": "subheading",
+        "type": "richtext",
+        "label": "Subheading",
+        "default": "<p>Use a stunning video to capture attention.</p>"
+      },
+      {
+        "id": "overlay_opacity",
+        "type": "range",
+        "label": "Video Overlay Opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "default": 0.3
+      },
+      {
+        "type": "header",
+        "content": "Content Layout"
+      },
+      {
+        "id": "content_position",
+        "type": "select",
+        "label": "Content Position",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "id": "text_color",
+        "type": "color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Call to Action Button"
+      },
+      {
+        "id": "cta_text",
+        "type": "text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "id": "cta_link",
+        "type": "url",
+        "label": "Button Link"
+      },
+      {
+        "id": "button_style",
+        "type": "select",
+        "label": "Button Style",
+        "options": [
+          {
+            "value": "outline",
+            "label": "Outline"
+          },
+          {
+            "value": "filled",
+            "label": "Filled"
+          }
+        ],
+        "default": "outline"
+      },
+      {
+        "id": "button_color",
+        "type": "color",
+        "label": "Button Color",
+        "default": "#ffffff"
+      },
+      {
+        "id": "button_text_color",
+        "type": "color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "id": "button_hover_color",
+        "type": "color",
+        "label": "Button Hover Color",
+        "default": "#ffffff"
+      },
+      {
+        "id": "button_hover_text_color",
+        "type": "color",
+        "label": "Button Hover Text Color",
+        "default": "#000000"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Video"
+      }
+    ]
+  }
 {% endschema %}
