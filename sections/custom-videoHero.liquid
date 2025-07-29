@@ -141,7 +141,6 @@
       assign position_class = 'hero-video-content--center'
   endcase
 
-  # Set button style class
   case section.settings.button_style
     when 'filled'
       assign button_class = 'hero-video-cta--filled'
@@ -149,7 +148,6 @@
       assign button_class = 'hero-video-cta--outline'
   endcase
 
-  # Get color values
   assign text_color = section.settings.text_color | default: '#ffffff'
   assign button_color = section.settings.button_color | default: '#ffffff'
   assign button_hover_color = section.settings.button_hover_color | default: '#ffffff'
@@ -176,11 +174,9 @@
   #hero-video-{{ section.id }} .hero-video-cta:hover {
     color: {{ button_hover_text_color }};
     {% if section.settings.button_style == 'filled' %}
-      /* Saat hover, button filled berubah ke outline (bg transparent, border tetap warna utama) */
       background-color: transparent;
       border: 2px solid {{ button_color }};
     {% else %}
-      /* Saat hover, button outline berubah ke filled (bg warna hover, border warna hover) */
       background-color: {{ button_hover_color }};
       border: 2px solid {{ button_hover_color }};
     {% endif %}

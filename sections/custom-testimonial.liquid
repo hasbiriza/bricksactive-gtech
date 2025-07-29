@@ -11,7 +11,14 @@
           <div class="swiper-slide">
             <div class="testimonial-card">
               <div class="testimonial-avatar">
-                <img src="{{ testimonial.avatar | img_url: '160x160' }}" alt="{{ testimonial.name }}"  width="{{ testimonial.width }}" height="{{ testimonial.height }}">
+               <div class="testimonial-avatar">
+                {{ testimonial.avatar | image_url: width: 160, height: 160, crop: 'center' | image_tag:
+                    alt: testimonial.name,
+                    class: 'avatar-image',
+                    loading: 'lazy',
+                    widths: '80,160,320'
+                }}
+              </div>
               </div>
               <div class="testimonial-stars">
                 {% assign filled_stars = testimonial.stars | plus: 0 %}
