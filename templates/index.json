@@ -86,12 +86,27 @@
       "settings": {
         "heading": "What Our Customers Say"
       }
+    },
+    "custom_product_slider_enwdGH": {
+      "type": "custom-productSlider",
+      "name": "Category Product Slider",
+      "settings": {
+        "heading": "Featured Products",
+        "collection": "automated-collection",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "view_all_text": "See All",
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true
+      }
     }
   },
   "order": [
     "rich_text_AejD76",
     "custom_video_hero_9GpEeF",
     "featured_collection",
-    "custom_testimonial_UxC7ti"
+    "custom_testimonial_UxC7ti",
+    "custom_product_slider_enwdGH"
   ]
 }
