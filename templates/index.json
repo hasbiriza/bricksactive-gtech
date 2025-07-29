@@ -37,12 +37,19 @@
       "name": "Hero Video",
       "settings": {
         "video": "shopify://files/videos/149B3C51B3F5E69878D62FB607642B6C.mp4",
-        "fallback_image": "shopify://shop_images/imgi_4_02-LEGO-T83HVLEOA-LEO10328-Multicolor.jpg",
-        "heading": "Showcase Your Brand",
-        "subheading": "<p>Use a stunning video to capture attention.</p>",
-        "overlay_opacity": 0.3,
+        "fallback_image": "shopify://shop_images/plastic-building-blocks-with-parts-scattered-around.jpg",
+        "heading": "",
+        "subheading": "",
+        "overlay_opacity": 0,
+        "content_position": "bottom",
+        "text_color": "#ffffff",
         "cta_text": "Shop Now",
-        "cta_link": ""
+        "cta_link": "shopify://collections",
+        "button_style": "filled",
+        "button_color": "#ffffff",
+        "button_text_color": "#121212",
+        "button_hover_color": "#ffffff",
+        "button_hover_text_color": "#ffffff"
       }
     },
     "featured_collection": {

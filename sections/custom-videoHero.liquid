@@ -164,22 +164,25 @@
 
   #hero-video-{{ section.id }} .hero-video-cta {
     color: {{ button_text_color }};
-    border-color: {{ button_color }};
+    border: 2px solid {{ button_color }};
     {% if section.settings.button_style == 'filled' %}
       background-color: {{ button_color }};
     {% else %}
       background-color: transparent;
     {% endif %}
+    transition: all 0.3s ease;
   }
 
   #hero-video-{{ section.id }} .hero-video-cta:hover {
     color: {{ button_hover_text_color }};
     {% if section.settings.button_style == 'filled' %}
-      border-color: {{ button_hover_text_color }};
+      /* Saat hover, button filled berubah ke outline (bg transparent, border tetap warna utama) */
       background-color: transparent;
+      border: 2px solid {{ button_color }};
     {% else %}
-      border-color: {{ button_hover_color }};
+      /* Saat hover, button outline berubah ke filled (bg warna hover, border warna hover) */
       background-color: {{ button_hover_color }};
+      border: 2px solid {{ button_hover_color }};
     {% endif %}
   }
 </style>
