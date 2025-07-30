@@ -32,6 +32,122 @@
         "padding_bottom": 28
       }
     },
+    "custom_liquid_wXNCYV": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "slideshow_nVW8La": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_Gw3JA7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/7EB53111EA38EC15AB0D608352099FF4.webp",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_HGDikf": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/E8FEA4C676185DBEF99C71564B006C73.webp",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_MQmzEQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/FB22044D641669924DADE86C868F9A65.webp",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_zhyX6F": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3A916E549312C6FA98072D3D317CAB1B.webp",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Gw3JA7",
+        "slide_HGDikf",
+        "slide_MQmzEQ",
+        "slide_zhyX6F"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "custom_product_slider_enwdGH": {
+      "type": "custom-productSlider",
+      "name": "Category Product Slider",
+      "settings": {
+        "heading": "Featured Products",
+        "collection": "automated-collection",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "view_all_text": "See All",
+        "enable_quick_add": true
+      }
+    },
     "custom_video_hero_9GpEeF": {
       "type": "custom-videoHero",
       "name": "Hero Video",
@@ -52,13 +168,110 @@
         "button_hover_text_color": "#ffffff"
       }
     },
+    "custom_testimonial_UxC7ti": {
+      "type": "custom-testimonial",
+      "name": "Testimonial Carousel",
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
+    },
+    "custom2_featured_product_NWUJJw": {
+      "type": "custom2-featured-product",
+      "name": " Featured Collection New ",
+      "settings": {
+        "show_border_top": true,
+        "title": "OUR BEST SELLER",
+        "heading_padding_bottom": 40,
+        "title_size": 32,
+        "title_size_mobile": 24,
+        "title_color": "#334155",
+        "title_align": "left",
+        "countdown": "",
+        "countdown_color": "#211747",
+        "view_all_text": "View All",
+        "view_all_color": "#211747",
+        "buttonActivation": false,
+        "button_bottom_mobile": false,
+        "collection": "automated-collection",
+        "limit_products": 16,
+        "products_to_show": 4.5,
+        "space_between_dekstop": 24,
+        "space_between_mobile": 24,
+        "cardinformation_align": "left",
+        "show_vendor": false,
+        "show_rating": false,
+        "show_secondary_image": true,
+        "image_ratio": "adapt",
+        "quick_add": "standard",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "image_banner_NBRBit": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/BD9D88C96EE2B0E8397D5EC0FB8BF349.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "image_with_text_QFhJ3N": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VmfYNb": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>LEGO® STORE CIPUTRA WORLD1st Floor, Unit 117-118Now Open</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_KxcDy4": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>View All LEGO® Stores &gt;</strong></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VmfYNb",
+        "text_KxcDy4"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/2476AE782134F6259C90975F4130AE06.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
+        "products_to_show": 12,
+        "title": "<strong>All LEGO® Products</strong>",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -67,7 +280,7 @@
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-1bbbbc12-6e2a-4951-a577-581851bc3c22",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -79,34 +292,18 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
-    },
-    "custom_testimonial_UxC7ti": {
-      "type": "custom-testimonial",
-      "name": "Testimonial Carousel",
-      "settings": {
-        "heading": "What Our Customers Say"
-      }
-    },
-    "custom_product_slider_enwdGH": {
-      "type": "custom-productSlider",
-      "name": "Category Product Slider",
-      "settings": {
-        "heading": "Featured Products",
-        "collection": "automated-collection",
-        "products_to_show": 8,
-        "show_view_all": true,
-        "view_all_text": "See All",
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": true
-      }
     }
   },
   "order": [
     "rich_text_AejD76",
+    "custom_liquid_wXNCYV",
+    "slideshow_nVW8La",
+    "custom_product_slider_enwdGH",
     "custom_video_hero_9GpEeF",
-    "featured_collection",
     "custom_testimonial_UxC7ti",
-    "custom_product_slider_enwdGH"
+    "custom2_featured_product_NWUJJw",
+    "image_banner_NBRBit",
+    "image_with_text_QFhJ3N",
+    "featured_collection"
   ]
 }

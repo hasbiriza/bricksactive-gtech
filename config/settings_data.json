@@ -16,7 +16,7 @@
     "type_body_font": "poppins_n4",
     "body_scale": 100,
     "page_width": 1600,
-    "spacing_sections": 0,
+    "spacing_sections": 40,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
     "animations_reveal_on_scroll": true,
@@ -253,6 +253,17 @@
           "background_gradient": "",
           "text": "#121212",
           "button": "#ed7501",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-817cc4a5-c77d-47db-98f3-b85849b0e4fa": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#121212"

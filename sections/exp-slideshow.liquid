@@ -1,0 +1,414 @@
+{% assign has_image = false %}
+{% if section.settings.image_source == 'regular' and section.settings.banner_image != blank %}
+  {% assign has_image = true %}
+{% else %}
+  {% assign featured_images = '' %}
+  {% case section.settings.resource_type %}
+    {% when 'page' %}
+      {% assign featured_images = page.metafields.custom.featured_images.value %}
+    {% when 'collection' %}
+      {% assign featured_images = collection.metafields.custom.featured_images.value %}
+    {% when 'product' %}
+      {% assign featured_images = product.metafields.custom.featured_images.value %}
+    {% when 'blog' %}
+      {% assign featured_images = blog.metafields.custom.featured_images.value %}
+  {% endcase %}
+  {% if featured_images != blank %}
+    {% assign has_image = true %}
+  {% endif %}
+{% endif %}
+
+<section {% unless has_image %}style="display: none;"{% endunless %}>
+  <div id="banner-container-{{ section.id }}"
+  class="banner-container-{{ section.id }} page-width"
+  data-desktop-full="{% if section.settings.enable_full_width %}true{% else %}false{% endif %}"
+  data-mobile-full="{% if section.settings.enable_mobile_full_width %}true{% else %}false{% endif %}"
+  style="background-color: {{ section.settings.background_color }};
+         padding-top: {{ section.settings.desktop_padding_top }}px;
+         padding-bottom: {{ section.settings.desktop_padding_bottom }}px;">
+    {% if section.settings.image_source == 'regular' %}
+      {% if section.settings.banner_image != blank %}
+        <img class="w-full h-auto block object-contain" 
+             src="{{ section.settings.banner_image | image_url: width: 3000, format: 'pjpg' }}" 
+             alt="Banner image">
+      {% endif %}
+    {% else %}
+      {% assign featured_images = '' %}
+      {% case section.settings.resource_type %}
+        {% when 'page' %}
+          {% assign featured_images = page.metafields.custom.featured_images.value %}
+        {% when 'collection' %}
+          {% assign featured_images = collection.metafields.custom.featured_images.value %}
+        {% when 'product' %}
+          {% assign featured_images = product.metafields.custom.featured_images.value %}
+        {% when 'blog' %}
+          {% assign featured_images = blog.metafields.custom.featured_images.value %}
+      {% endcase %}
+      
+      {% if featured_images %}
+        {% assign image_count = featured_images.count %}
+        {%- comment -%}
+          Mendefinisikan first_image untuk digunakan di perhitungan desktop maupun mobile.
+        {%- endcomment -%}
+        {% assign first_image = featured_images.first %}
+        
+        {%- comment -%}
+          Perhitungan tinggi untuk desktop.
+          Jika opsi height_option adalah "first", tinggi dihitung secara default dengan Liquid (fallback) namun nantinya akan di-overwrite oleh JavaScript.
+        {%- endcomment -%}
+        {% if section.settings.height_option == 'first' %}
+          <pre style="display: none;">
+            Debug Info:
+            first_image.aspect_ratio: {{ first_image.aspect_ratio }}
+            first_image.width: {{ first_image.width }}
+            first_image.height: {{ first_image.height }}
+            JSON: {{ first_image | json }}
+          </pre>
+          {% if first_image.aspect_ratio %}
+            {% assign banner_height = 2000 | divided_by: first_image.aspect_ratio | round %}
+          {% else %}
+            {% assign banner_height = 700 %}
+          {% endif %}
+        {% elsif section.settings.height_option == 'medium' %}
+          {% assign banner_height = 400 %}
+        {% elsif section.settings.height_option == 'large' %}
+          {% assign banner_height = 600 %}
+        {% else %}
+          {% assign banner_height = 400 %}
+        {% endif %}
+        
+        {%- comment -%}
+          Perhitungan tinggi untuk mobile hanya diperlukan bila opsi mobile_height_option bukan "first".
+          Jika mobile_height_option adalah "first", maka perhitungan akan dilakukan secara JavaScript.
+        {%- endcomment -%}
+        {% if section.settings.mobile_height_option != 'first' %}
+          {% if section.settings.mobile_height_option == 'medium' %}
+            {% assign mobile_banner_height = 400 %}
+          {% elsif section.settings.mobile_height_option == 'large' %}
+            {% assign mobile_banner_height = 600 %}
+          {% elsif section.settings.mobile_height_option == 'custom' %}
+            {% assign mobile_banner_height = section.settings.custom_mobile_height %}
+          {% else %}
+            {% assign mobile_banner_height = 400 %}
+          {% endif %}
+        {% endif %}
+
+        <div class="swiper-{{ section.id }} relative" 
+          style="height: {{ banner_height }}px;"
+          data-height-option="{{ section.settings.height_option }}"
+          data-mobile-height-option="{{ section.settings.mobile_height_option }}"
+          {% if section.settings.mobile_height_option != 'first' %}
+            data-mobile-banner-height="{{ mobile_banner_height }}"
+          {% endif %}>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {% for image in featured_images %}
+                <div class="swiper-slide">
+                  <img class="w-full h-auto object-cover" 
+                       src="{{ image | image_url: width: 2000 }}" 
+                       alt="Featured image {{ forloop.index }}"
+                       loading="lazy"
+                       width="2000"
+                       {% if section.settings.height_option == 'first' and first_image and first_image.aspect_ratio %}
+                         height="{{ 2000 | divided_by: image.aspect_ratio | round }}"
+                       {% else %}
+                         height="{{ banner_height }}"
+                       {% endif %}>
+                </div>
+              {% endfor %}
+            </div>
+            {% if image_count > 1 %}
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* Tailwind dan CSS kustom untuk tampilan Swiper */
+  .swiper-{{ section.id }} .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-{{ section.id }} .swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-{{ section.id }} .swiper-button-prev,
+  .swiper-{{ section.id }} .swiper-button-next {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 0 30px;
+  }
+  
+  .swiper-{{ section.id }} .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .swiper-{{ section.id }} .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  .swiper-{{ section.id }} .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 750px) {
+    .banner-container-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px !important;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px !important;
+    }
+  }
+  
+</style>
+
+<script>
+  (function() {
+    // Inisialisasi Swiper slider
+    function initSwiper() {
+      if (typeof Swiper === 'undefined') return;
+      // Cari elemen swiper yang benar (di dalam container wrapper)
+      const swiperContainer = document.querySelector('.swiper-{{ section.id }} .swiper');
+      if (!swiperContainer) return;
+      new Swiper(swiperContainer, {
+        pagination: { 
+          el: '.swiper-{{ section.id }} .swiper-pagination', 
+          clickable: true 
+        },
+        navigation: { 
+          nextEl: '.swiper-{{ section.id }} .swiper-button-next', 
+          prevEl: '.swiper-{{ section.id }} .swiper-button-prev' 
+        },
+        autoplay: { delay: 5000 }
+      });
+    }
+
+    // Fungsi untuk menyesuaikan tinggi banner.
+    function adjustBanner() {
+      const container = document.querySelector('.swiper-{{ section.id }}');
+      if (!container) return;
+
+      // Jika viewport kurang dari 750px, gunakan pengaturan mobile.
+      if (window.innerWidth < 750) {
+        if (container.dataset.mobileHeightOption === 'first') {
+          const firstImg = container.querySelector('.swiper-slide img');
+          if (!firstImg) return;
+          const updateMobileHeight = () => {
+            const { naturalWidth, naturalHeight } = firstImg;
+            if (naturalWidth && naturalHeight) {
+              container.style.height = (container.offsetWidth / (naturalWidth / naturalHeight)) + 'px';
+            }
+          };
+          if (firstImg.complete) {
+            updateMobileHeight();
+          } else {
+            firstImg.addEventListener('load', updateMobileHeight, { once: true });
+          }
+        } else {
+          const mobileHeight = container.dataset.mobileBannerHeight;
+          if (mobileHeight) {
+            container.style.height = mobileHeight + 'px';
+          }
+        }
+        return;
+      }
+
+      // Untuk desktop: jika opsi height_option adalah "Adapt to First Image", hitung tinggi secara dinamis.
+      if (container.dataset.heightOption === 'first') {
+        const firstImg = container.querySelector('.swiper-slide img');
+        if (!firstImg) return;
+        const updateHeight = () => {
+          const { naturalWidth, naturalHeight } = firstImg;
+          if (naturalWidth && naturalHeight) {
+            container.style.height = (container.offsetWidth / (naturalWidth / naturalHeight)) + 'px';
+          }
+        };
+        if (firstImg.complete) {
+          updateHeight();
+        } else {
+          firstImg.addEventListener('load', updateHeight, { once: true });
+        }
+      }
+    }
+
+    function initAll() {
+      initSwiper();
+      adjustBanner();
+    }
+
+    document.addEventListener('DOMContentLoaded', initAll);
+    window.addEventListener('load', initAll);
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+        initAll();
+      }
+    });
+    window.addEventListener('resize', adjustBanner);
+  })();
+</script>
+
+
+
+<script>
+  (function() {
+    function updatePageWidth() {
+      var container = document.getElementById('banner-container-{{ section.id }}');
+      if (!container) return;
+      
+      // Ambil nilai pengaturan fullscreen dari atribut data
+      var desktopFull = container.getAttribute('data-desktop-full') === 'true';
+      var mobileFull  = container.getAttribute('data-mobile-full') === 'true';
+      
+      // Jika viewport < 750px (mobile)
+      if (window.innerWidth < 750) {
+        if (mobileFull) {
+          container.classList.remove('page-width');
+        } else {
+          container.classList.add('page-width');
+        }
+      } else {
+        // Desktop
+        if (desktopFull) {
+          container.classList.remove('page-width');
+        } else {
+          container.classList.add('page-width');
+        }
+      }
+    }
+    
+    // Inisialisasi saat halaman dimuat dan saat resize
+    document.addEventListener('DOMContentLoaded', updatePageWidth);
+    window.addEventListener('load', updatePageWidth);
+    window.addEventListener('resize', updatePageWidth);
+  })();
+</script>
+
+{% schema %}
+  {
+    "name": "Fullwidth Banner",
+    "settings": [
+      {
+        "type": "select",
+        "id": "image_source",
+        "label": "Image Source",
+        "options": [
+          { "value": "regular", "label": "Regular Image" },
+          { "value": "metafield", "label": "Fetch from Metafield" }
+        ],
+        "default": "regular"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image",
+        "info": "Used only if the Image Source is Regular Image."
+      },
+      {
+        "type": "select",
+        "id": "resource_type",
+        "label": "Resource Type for Metafield",
+        "options": [
+          { "value": "page", "label": "Page" },
+          { "value": "collection", "label": "Collection" },
+          { "value": "product", "label": "Product" },
+          { "value": "blog", "label": "Blog" }
+        ],
+        "default": "page",
+        "info": "Select the resource from which the featured images will be fetched."
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_full_width",
+        "label": "Make Content Full Width (Desktop)",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "height_option",
+        "label": "Image Height Adaptation",
+        "options": [
+          { "value": "first", "label": "Adapt to First Image" },
+          { "value": "medium", "label": "Medium Height" },
+          { "value": "large", "label": "Large Height" }
+        ],
+        "default": "first",
+        "info": "Set the banner height based on the first image or a fixed size."
+      },
+      {
+        "type": "select",
+        "id": "mobile_height_option",
+        "label": "Mobile Height Option (for viewport < 750px)",
+        "options": [
+          { "value": "first", "label": "Adapt to First Image" },
+          { "value": "medium", "label": "Medium Height" },
+          { "value": "large", "label": "Large Height" },
+          { "value": "custom", "label": "Custom Height" }
+        ],
+        "default": "first",
+        "info": "Set the banner height for mobile when the viewport is less than 750px."
+      },
+      {
+        "type": "number",
+        "id": "custom_mobile_height",
+        "label": "Custom Mobile Height (px)",
+        "default": 500,
+        "info": "Enter the banner height for mobile if the Custom option is selected."
+      },
+      {
+        "type": "number",
+        "id": "desktop_padding_top",
+        "label": "Desktop Padding Top (px)",
+        "default": 0
+      },
+      {
+        "type": "number",
+        "id": "desktop_padding_bottom",
+        "label": "Desktop Padding Bottom (px)",
+        "default": 0
+      },
+      {
+        "type": "number",
+        "id": "mobile_padding_top",
+        "label": "Mobile Padding Top (px)",
+        "default": 0
+      },
+      {
+        "type": "number",
+        "id": "mobile_padding_bottom",
+        "label": "Mobile Padding Bottom (px)",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_full_width",
+        "label": "Make Mobile Content Full Width",
+        "default": false
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      { "name": "Fullwidth Banner" }
+    ]
+  }
+{% endschema %}
+
+

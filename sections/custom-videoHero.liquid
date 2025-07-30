@@ -192,7 +192,7 @@
   {%- if section.settings.fallback_image != blank -%}
     {{ section.settings.fallback_image | image_url: width: 1600 | image_tag: 
         class: 'hero-video__media hero-video__media--mobile', 
-        alt: section.settings.fallback_image.alt | default: 'Hero background image', 
+        alt: section.settings.fallback_image.alt , 
         loading: 'lazy', 
         width: 1600, 
         height: 900 

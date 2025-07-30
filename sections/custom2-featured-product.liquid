@@ -1,0 +1,658 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if section.settings.quick_add == 'bulk' -%}
+  <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+
+
+{%- style -%}
+  #section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | append: 'px' }};
+    padding-bottom: {{ section.settings.padding_bottom | append: 'px' }};
+    background-color: {{ section.settings.background }};
+  }
+
+  #section-{{ section.id }} .heading-part {
+    padding-bottom: {{ section.settings.heading_padding_bottom | append: 'px' }};
+  }
+
+  #section-{{ section.id }} .bottom-controls {
+    padding-top: {{ section.settings.heading_padding_bottom | append: 'px' }};
+  }
+
+  #section-{{ section.id }} .fc-title {
+    font-size: {{ section.settings.title_size | append: 'px' }};
+    font-weight: 600;
+    color: {{ section.settings.title_color }};
+    text-align: {{ section.settings.title_align }};
+  }
+
+  #section-{{ section.id }} .card__information, 
+  #section-{{ section.id }} .card-information {
+    text-align: {{ section.settings.cardinformation_align }};
+  }
+  
+  #section-{{ section.id }} .caption-with-letter-spacing {
+    color: black;
+  }
+
+  #section-{{ section.id }} .exp-countdown {
+    color: {{ section.settings.countdown_color }};
+    border-color: {{ section.settings.countdown_color }};
+  }
+
+  #section-{{ section.id }} .view-all {
+    color: {{ section.settings.view_all_color }};
+    border-color: {{ section.settings.view_all_color }};
+  }
+
+  .swiper-{{ section.id }} {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+  }
+  .swiper-initialized.swiper-{{ section.id }} {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .swiper-{{ section.id }}-button-prev.swiper-button-disabled,
+  .swiper-{{ section.id }}-button-next.swiper-button-disabled {
+    color: #D9D9D9 !important;
+    border-color: #D9D9D9 !important;
+    cursor: not-allowed;
+  }
+
+  .swiper-{{ section.id }}-button-prev.swiper-button-disabled svg path,
+  .swiper-{{ section.id }}-button-next.swiper-button-disabled svg path {
+    color: #D9D9D9 !important;
+  }
+  
+  {% if section.settings.button_bottom_mobile %}
+    @media (max-width: 749px) {
+      #section-{{ section.id }} .bottom-swiper-viewall {
+        display: flex !important;
+      }
+    }
+
+    @media (min-width: 750px) {
+      #section-{{ section.id }} .bottom-swiper-viewall {
+        display: none !important;
+      }
+    }
+  {% endif %}
+
+  @media screen and (max-width: 768px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile | append: 'px' }};
+      padding-bottom: {{ section.settings.padding_bottom_mobile | append: 'px' }};
+    }
+
+    #section-{{ section.id }} .fc-title {
+      font-size: {{ section.settings.title_size_mobile | append: 'px' }};
+    }
+  }
+{%- endstyle -%}
+
+{% stylesheet %}
+  .desktop-nav {
+    display: flex;
+  }
+
+  .card-part .card__heading {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  .view-all {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    display: none !important;
+  }
+
+  .card__badge.bottom.left {
+    display: none !important;
+  }
+
+
+  @media (max-width: 1199px) {
+    .card__badge {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 5px !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .card-part .card__heading {
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .view-all {
+      font-size: small;
+    }
+  }
+{% endstylesheet %} 
+
+<section
+  id="section-{{ section.id }}"
+  class="tw-w-full tw-overflow-hidden {% if section.settings.show_border_top %} tw-border-t tw-border-slate-200 {% endif %}"
+>
+  <div class="page-width">
+
+    <div class="heading-part tw-w-full tw-flex tw-flex-row tw-items-center tw-justify-between">
+      <div class="tw-flex tw-flex-row tw-items-center tw-justify-start tw-gap-[48px]">
+        {% if section.settings.title != blank %}
+          <h2 class="fc-title">{{ section.settings.title }}</h2>
+        {% endif %}
+
+        {% if section.settings.countdown != blank %}
+          <div class="exp-countdown tw-px-[24px] tw-h-[40px] tw-flex tw-flex-row tw-items-center tw-justify-center tw-gap-[2px] tw-border tw-rounded-[var(--buttons-radius)]">
+            <div id="ex-countdown__day">00</div>:
+            <div id="ex-countdown__hour">00</div>:
+            <div id="ex-countdown__minute">00</div>:
+            <div id="ex-countdown__second">00</div>
+          </div>
+        {% endif %}
+      </div>
+        <div class="swipe-viewall tw-gap-[16px] {% if section.settings.button_bottom_mobile %} tw-hidden  tw-mdlgshopify:!tw-flex tw-items-center {% endif %} {% unless section.settings.button_bottom_mobile %} tw-flex {% endunless %}  {% if section.settings.buttonActivation %} !tw-hidden {% endif %} ">
+          <div class="tw-flex tw-flex-row tw-items-center tw-justify-end tw-gap-[16px]">
+            <span
+              id="prevButton-{{ section.id }}"
+              class="swiper-{{ section.id }}-button-prev tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-w-[40px] tw-h-[40px] tw-rounded-[var(--buttons-radius)] tw-p-[8px_10px] tw-border tw-border-black active:tw-scale-105 tw-transition tw-duration-300 tw-ease-in-out desktop-nav"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="currentColor">
+                <path d="M6.05782 11.7768L1.0443 6.76333C0.928944 6.64824 0.844749 6.52917 0.791713 6.40613C0.738676 6.28308 0.712158 6.14771 0.712158 6C0.712158 5.85229 0.738676 5.71692 0.791713 5.59387C0.844749 5.47083 0.928944 5.35176 1.0443 5.23668L6.05782 0.222754C6.12704 0.153807 6.20433 0.0994431 6.28972 0.0596659C6.37485 0.0198886 6.4662 0 6.56379 0C6.7587 0 6.92815 0.0658989 7.07214 0.197694C7.21587 0.329489 7.28773 0.503182 7.28773 0.718775V11.2812C7.28773 11.4968 7.21508 11.6705 7.06976 11.8023C6.9247 11.9341 6.75538 12 6.5618 12C6.51327 12 6.34528 11.9256 6.05782 11.7768Z" />
+              </svg>
+            </span>
+
+            <span
+              id="nextButton-{{ section.id }}"
+              class="swiper-{{ section.id }}-button-next tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-w-[40px] tw-h-[40px] tw-rounded-[var(--buttons-radius)] tw-p-[8px_10px] tw-border tw-border-black active:tw-scale-105 tw-transition tw-duration-300 tw-ease-in-out desktop-nav"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="currentColor">
+                <path d="M1.94218 11.7768L6.9557 6.76333C7.07106 6.64824 7.15525 6.52917 7.20829 6.40613C7.26132 6.28308 7.28784 6.14771 7.28784 6C7.28784 5.85229 7.26132 5.71692 7.20829 5.59387C7.15525 5.47083 7.07106 5.35176 6.9557 5.23668L1.94218 0.222754C1.87296 0.153807 1.79567 0.0994431 1.71028 0.0596659C1.62515 0.0198886 1.5338 0 1.43621 0C1.2413 0 1.07185 0.0658989 0.927858 0.197694C0.78413 0.329489 0.712265 0.503182 0.712265 0.718775V11.2812C0.712265 11.4968 0.784925 11.6705 0.930244 11.8023C1.0753 11.9341 1.24462 12 1.4382 12C1.48673 12 1.65472 11.9256 1.94218 11.7768Z" />
+              </svg>
+            </span>
+          </div>
+          <div class="tw-flex">
+            {% if section.settings.view_all_text != blank %}
+              <a
+                href="{{ section.settings.collection.url }}"
+                class="view-all tw-bg-black hover:tw-scale-105 hover:tw-shadow-sm tw-transition tw-duration-300 tw-ease-in-out tw-inline-flex tw-flex-row tw-items-center tw-justify-center tw-text-[14px] tw-rounded-[var(--buttons-radius)] tw-border tw-border-black tw-text-black tw-px-[30px] tw-py-[8px] tw-h-[40px]"
+              >
+                {{ section.settings.view_all_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+    <div class="card-part tw-w-full">
+      <div class="swiper-{{ section.id }} tw-overflow-hidden">
+        <div class="swiper-wrapper">
+          {% for product in section.settings.collection.products limit: section.settings.limit_products %}
+            <div class="swiper-slide">
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: section.settings.image_ratio,
+                show_secondary_image: section.settings.show_secondary_image,
+                show_vendor: section.settings.show_vendor,
+                show_rating: section.settings.show_rating,
+                quick_add: section.settings.quick_add,
+                section_id: section.id
+              %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-{{ section.id }}-pagination tw-text-center"></div>
+      </div>
+    </div>
+
+    {% if section.settings.button_bottom_mobile %}
+        <div class="swipe-viewall bottom-swiper-viewall tw-gap-[16px] tw-flex tw-items-center tw-justify-end">
+        <div class="tw-flex tw-flex-row tw-items-center tw-justify-end tw-gap-[16px]">
+          <span
+            id="prevButton-{{ section.id }}"
+            class="swiper-{{ section.id }}-button-prev tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-w-[40px] tw-h-[40px] tw-rounded-[var(--buttons-radius)] tw-p-[8px_10px] tw-border tw-border-black active:tw-scale-105 tw-transition tw-duration-300 tw-ease-in-out"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="currentColor">
+              <path d="M6.05782 11.7768L1.0443 6.76333C0.928944 6.64824 0.844749 6.52917 0.791713 6.40613C0.738676 6.28308 0.712158 6.14771 0.712158 6C0.712158 5.85229 0.738676 5.71692 0.791713 5.59387C0.844749 5.47083 0.928944 5.35176 1.0443 5.23668L6.05782 0.222754C6.12704 0.153807 6.20433 0.0994431 6.28972 0.0596659C6.37485 0.0198886 6.4662 0 6.56379 0C6.7587 0 6.92815 0.0658989 7.07214 0.197694C7.21587 0.329489 7.28773 0.503182 7.28773 0.718775V11.2812C7.28773 11.4968 7.21508 11.6705 7.06976 11.8023C6.9247 11.9341 6.75538 12 6.5618 12C6.51327 12 6.34528 11.9256 6.05782 11.7768Z" />
+            </svg>
+          </span>
+
+          <span
+            id="nextButton-{{ section.id }}"
+            class="swiper-{{ section.id }}-button-next tw-flex tw-items-center tw-justify-center tw-cursor-pointer tw-w-[40px] tw-h-[40px] tw-rounded-[var(--buttons-radius)] tw-p-[8px_10px] tw-border tw-border-black active:tw-scale-105 tw-transition tw-duration-300 tw-ease-in-out"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="currentColor">
+              <path d="M1.94218 11.7768L6.9557 6.76333C7.07106 6.64824 7.15525 6.52917 7.20829 6.40613C7.26132 6.28308 7.28784 6.14771 7.28784 6C7.28784 5.85229 7.26132 5.71692 7.20829 5.59387C7.15525 5.47083 7.07106 5.35176 6.9557 5.23668L1.94218 0.222754C1.87296 0.153807 1.79567 0.0994431 1.71028 0.0596659C1.62515 0.0198886 1.5338 0 1.43621 0C1.2413 0 1.07185 0.0658989 0.927858 0.197694C0.78413 0.329489 0.712265 0.503182 0.712265 0.718775V11.2812C0.712265 11.4968 0.784925 11.6705 0.930244 11.8023C1.0753 11.9341 1.24462 12 1.4382 12C1.48673 12 1.65472 11.9256 1.94218 11.7768Z" />
+            </svg>
+          </span>
+        </div>
+        <div class="tw-flex">
+          {% if section.settings.view_all_text != blank %}
+            <a
+              href="{{ section.settings.collection.url }}"
+              class="view-all tw-bg-black hover:tw-scale-105 hover:tw-shadow-sm tw-transition tw-duration-300 tw-ease-in-out tw-inline-flex tw-flex-row tw-items-center tw-justify-center tw-text-[14px] tw-rounded-[var(--buttons-radius)] tw-border tw-border-black tw-text-black tw-px-[16px] tw-h-[40px] tw-px-[30px] tw-py-[8px]"
+            >
+              {{ section.settings.view_all_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if section.settings.countdown != blank %}
+    <script defer="defer">
+    // Countdown logic remains unchanged
+    
+        let countdownElement = document.querySelector('.exp-countdown');
+        let countdownDate = new Date("{{ section.settings.countdown }}").getTime();
+
+        let countdown = setInterval(function() {
+        let now = new Date().getTime();
+        let distance = countdownDate - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("ex-countdown__day").innerText = days;
+        document.getElementById("ex-countdown__hour").innerText = hours;
+        document.getElementById("ex-countdown__minute").innerText = minutes;
+        document.getElementById("ex-countdown__second").innerText = seconds;
+
+        if (distance < 0) {
+            clearInterval(countdown);
+            countdownElement.classList.add('hidden');
+        }
+        }, 1000);
+
+    </script>
+{% endif %}
+
+<script defer="defer">
+  // Swiper script remains unchanged
+  document.addEventListener('DOMContentLoaded', function () {
+    initSwiper('{{ section.id }}');
+  });
+
+  function initSwiper(sectionId) {
+    const swiperElement = document.querySelector('.swiper-' + sectionId + ' .swiper-wrapper');
+    if (!swiperElement) return; 
+
+    new Swiper('.swiper-' + sectionId, {
+      slidesPerView: 2,
+      spaceBetween: 24,
+      navigation: {
+        nextEl: `.swiper-${sectionId}-button-next`,
+        prevEl: `.swiper-${sectionId}-button-prev`
+      },
+      breakpoints: {
+        750: {
+          slidesPerView: {{ section.settings.products_to_show }},
+          spaceBetween: 24,
+        }
+      },
+      pagination: {
+        el: `.swiper-${sectionId}-pagination`
+      },  
+      grabCursor: true, 
+      freeMode: true,
+      mousewheel: {
+        forceToAxis: true, 
+      },      
+      on: {
+        init: function () {
+          swiperElement.parentNode.classList.add('swiper-initialized');
+        }
+      }
+    });
+  }
+</script>
+
+{%- if request.design_mode -%}
+  <script>
+    document.addEventListener('shopify:section:load', function(event) {
+      initSwiper(event.detail.sectionId);
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": " Featured Collection New",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_border_top",
+        "label": "Show border top",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "OUR BEST SELLER"
+      },
+      {
+        "type": "range",
+        "id": "heading_padding_bottom",
+        "label": "Padding bottom Heading",
+        "default": 40,
+        "min": 8,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_size",
+        "label": "Font size (desktop)",
+        "default": 32,
+        "min": 8,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "title_size_mobile",
+        "label": "Font size (mobile)",
+        "default": 24,
+        "min": 8,
+        "max": 80,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Color",
+        "default": "#334155"
+      },
+      {
+        "type": "select",
+        "id": "title_align",
+        "label": "Align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Countdown"
+      },
+      {
+        "type": "text",
+        "id": "countdown",
+        "label": "Deadline",
+        "default": "12/30/2024 15:00:00",
+        "info": "Format: MM/DD/YYYY HH:MM:SS"
+      },
+      {
+        "type": "color",
+        "id": "countdown_color",
+        "label": "Color",
+        "default": "#211747"
+      },
+      {
+        "type": "header",
+        "content": "View All"
+      },
+      {
+        "type": "text",
+        "id": "view_all_text",
+        "label": "Text",
+        "default": "View All",
+        "info": "Leave this field empty to hide view all button"
+      },
+      {
+        "type": "color",
+        "id": "view_all_color",
+        "label": "Color",
+        "default": "#211747"
+      },
+      {
+      "type": "checkbox",
+      "id": "buttonActivation",
+      "label": "Disable Button",
+      "default": false
+      },
+      {
+      "type": "checkbox",
+      "id": "button_bottom_mobile",
+      "label": "Button in bottom when in mobile",
+      "default": false
+      },
+      {
+        "type": "header",
+        "content": "Collection"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "limit_products",
+        "label": "Limit products",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "label": "Products to show",
+        "min": 1,
+        "max": 10,
+        "step": 0.5,
+        "default": 4.5,
+        "info": "For desktop only"
+      },
+      {
+        "type": "range",
+        "id": "space_between_dekstop",
+        "label": "Space Between Card On Desktop",
+        "default": 24,
+        "min": 2,
+        "max": 30,
+        "step": 2
+      },
+      {
+        "type": "range",
+        "id": "space_between_mobile",
+        "label": "Space Between Card On mobile",
+        "default": 24,
+        "min": 2,
+        "max": 30,
+        "step": 2
+      },
+      {
+        "type": "header",
+        "content": "Product Card"
+      },
+      {
+        "type": "select",
+        "id": "cardinformation_align",
+        "label": "Card Information Align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rating",
+        "label": "Show rating",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "label": "Show secondary image",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image ratio",
+        "default": "adapt",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "Adapt"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "quick_add",
+        "default": "none",
+        "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
+        "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          },
+          {
+            "value": "bulk",
+            "label": "Bulk"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section Padding (Desktop)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "default": 40,
+        "min": 0,
+        "max": 104,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "default": 40,
+        "min": 0,
+        "max": 104,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding (Mobile)"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding top",
+        "default": 24,
+        "min": 0,
+        "max": 104,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding bottom",
+        "default": 24,
+        "min": 0,
+        "max": 104,
+        "step": 2,
+        "unit": "px"
+      }
+    ],
+    "presets": [
+      {
+        "name": " Featured Collection New "
+      }
+    ]
+  }
+{% endschema %}

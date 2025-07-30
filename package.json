@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "shopify theme dev --store bricksactive-gtech.myshopify.com  --port 9393 ",
     "pull": "shopify theme pull --store bricksactive-gtech.myshopify.com",
-    "tailwind": "npx tailwindcss -i ./assets/input.css -o ./assets/output.css --watch ",
+    "tailwind": "npx tailwindcss -i ./assets/input.css -o ./assets/output.css --watch --minify ",
     "hasbidev": "shopify theme pull --store bricksactive-gtech.myshopify.com "
   },
   "author": "",
