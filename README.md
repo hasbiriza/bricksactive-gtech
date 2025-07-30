@@ -100,6 +100,7 @@ You can simulate checkout using Shopify’s built-in test mode:
    - Card Number: `1`
    - CVV: `123`
    - Name: Any name
+   - Expiration: Any Future Date
 
 This demonstrates that the theme is not only visually accurate but also fully functional.
 
