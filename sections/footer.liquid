@@ -185,78 +185,59 @@
                         {%- endif -%}
                       </div>
                     {%- when 'newsletter' -%}
+                     {%- when 'newsletter' -%}
                       <div class="footer-block__details-content ">
-                        <h2 class="footer-block__heading inline-richtext">{{ block.settings.newsletter_subheading }}</h2>
-                        <div class="footer-block__details-content rte mb-[24px] mdlgshopify:mb-[56px]">
-                          {{ block.settings.subheading_content }}
-                        </div>
-                        {%- if block.settings.newsletter_heading != blank -%}
-                          <h2 class="footer-block__heading inline-richtext">{{ block.settings.newsletter_heading }}</h2>
-                        {%- endif -%}
-                        {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form max-w-full' -%}
-                          <input type="hidden" name="contact[tags]" value="newsletter">
-                          <div class="newsletter-form__field-wrapper max-w-full">
-                            <div class="field">
-                              <input
-                                id="NewsletterForm--{{ section.id }}"
-                                type="email"
-                                name="contact[email]"
-                                class="field__input"
-                                value="{{ form.email }}"
-                                aria-required="true"
-                                autocorrect="off"
-                                autocapitalize="off"
-                                autocomplete="email"
-                                {% if form.errors %}
-                                  autofocus
-                                  aria-invalid="true"
-                                  aria-describedby="ContactFooter-error"
-                                {% elsif form.posted_successfully? %}
-                                  aria-describedby="ContactFooter-success"
-                                {% endif %}
-                                placeholder="{{ 'newsletter.label' | t }}"
-                                required
-                              >
-                              <label class="field__label" for="NewsletterForm--{{ section.id }}">
-                                {{ 'newsletter.label' | t }}
-                              </label>
-                              <button
-                                type="submit"
-                                class="newsletter-form__button field__button"
-                                name="commit"
-                                id="Subscribe"
-                                aria-label="{{ 'newsletter.button_label' | t }}"
-                              >
-                                <span class="svg-wrapper">
-                                  {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                            </div>
-                            {%- if form.errors -%}
-                              <small class="newsletter-form__message form__message" id="ContactFooter-error">
-                                <span class="svg-wrapper">
-                                  {{- 'icon-error.svg' | inline_asset_content -}}
-                                </span>
-                                {{- form.errors.translated_fields.email | capitalize }}
-                                {{ form.errors.messages.email -}}
-                              </small>
-                            {%- endif -%}
-                          </div>
-                          {%- if form.posted_successfully? -%}
-                            <h3
-                              class="newsletter-form__message newsletter-form__message--success form__message"
-                              id="ContactFooter-success"
-                              tabindex="-1"
-                              autofocus
-                            >
-                              <span class="svg-wrapper">
-                                {{- 'icon-success.svg' | inline_asset_content -}}
-                              </span>
-                              {{- 'newsletter.success' | t }}
-                            </h3>
-                          {%- endif -%}
+                        <h2 class="tw-text-white tw-text-[16px] tw-mt-0  tw-mb-[20px]">{{ block.settings.newsletter_heading | default: "Newsletter" }}</h2>
+                        <p class="tw-text-gray-300  tw-text-lg tw-mb-6">
+                          {{ block.settings.newsletter_subheading | default: "Subscribe to be the first to hear about our exclusive offers and latest arrivals." }}
+                        </p>
+                        {%- form 'customer', id: 'ContactFooter', class: 'tw-flex tw-mb-4' -%}
+                          <input
+                            id="NewsletterForm--{{ section.id }}"
+                            type="email"
+                            name="contact[email]"
+                            class="tw-flex-1 tw-p-4 tw-rounded-l-lg tw-bg-white tw-text-gray-800 tw-text-base tw-outline-none"
+                            value="{{ form.email }}"
+                            aria-required="true"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            autocomplete="email"
+                            {% if form.errors %}autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %}aria-describedby="ContactFooter-success"{% endif %}
+                            placeholder="{{ 'newsletter.label' | t }}"
+                            required
+                          >
+                          <button
+                            type="submit"
+                            class="tw-bg-gray-900 tw-text-gray-300  tw-px-6 tw-rounded-r-lg hover:tw-bg-gray-700 tw-flex tw-items-center"
+                            name="commit"
+                            id="Subscribe"
+                            aria-label="{{ 'newsletter.button_label' | t }}"
+                          >
+                            <svg class="tw-w-5 tw-h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                          </button>
                         {%- endform -%}
+                        <div class="tw-flex tw-items-start tw-mb-6">
+                          <input id="newsletter-consent-{{ section.id }}" type="checkbox" required class="tw-mt-1 tw-mr-3 tw-w-5 tw-h-5 tw-text-blue-600 tw-border-gray-300 tw-rounded focus:tw-ring-blue-500">
+                          <label for="newsletter-consent-{{ section.id }}" class="tw-text-gray-300  tw-text-sm">
+                            By signing up, you agree to receive any communications from us and you have read our
+                            <a href="/policies/privacy-policy" class="tw-underline hover:tw-text-yellow-200" target="_blank">Privacy Policy</a>
+                            and
+                            <a href="/policies/terms-of-service" class="tw-underline hover:tw-text-yellow-200" target="_blank">Terms & Conditions</a>.
+                          </label>
+                        </div>
+                        <div class="tw-mt-8">
+                          <h3 class="tw-text-gray-300   tw-text-xl tw-mb-2">Follow Us</h3>
+                          <div class="tw-flex tw-gap-4">
+                            {% if section.settings.social_instagram_link != blank %}
+                              <a href="{{ section.settings.social_instagram_link }}" class="tw-text-gray-300  hover:tw-text-yellow-300 tw-text-2xl" target="_blank" rel="noopener">
+                                <!-- IG SVG -->
+                                <svg class="tw-w-8 tw-h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+                              </a>
+                            {% endif %}
+                          </div>
+                        </div>
                       </div>
+
                   {%- endcase -%}
                 </div>
               </div>
@@ -418,7 +399,6 @@
     padding-top: 12px;
   }
 
-  /* Newsletter tetap visible */
   #Block-{{ block.id }}[id^="Block-newsletter"] {
     display: block !important;
     max-height: none !important;
@@ -721,6 +701,18 @@ document.addEventListener('DOMContentLoaded', function() {
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
     },
+        {
+          "type": "url",
+          "id": "social_instagram_link",
+          "label": "Instagram URL",
+          "info": "Isi link profil Instagram"
+        },
+        {
+          "type": "url",
+          "id": "social_twitter_link",
+          "label": "Twitter/X URL",
+          "info": "Isi link profil Twitter/X"
+        },
     {
       "type": "header",
       "content": "t:sections.footer.settings.header__2.content",
